@@ -187,7 +187,7 @@ namespace gantry
 	
 	
 	constexpr float PUTKFS_PUT_KFS_IN_X_3L = 0.42;
-	constexpr float PUTKFS_PUT_KFS_IN_P_3L = 2.6;
+	constexpr float PUTKFS_PUT_KFS_IN_P_3L = 2.8;
 	constexpr float PUTKFS_PUT_KFS_IN_Z_3L = 0.89;
 	
 	bool PutKFS::Get_KFS_Phase()

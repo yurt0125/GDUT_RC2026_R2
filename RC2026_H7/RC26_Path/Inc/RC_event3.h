@@ -5,7 +5,7 @@
 #include <main.h>
 #ifdef __cplusplus
 
-using Event3_t = uint32_t;
+using Event3_t = uint64_t;
 
 constexpr Event3_t EVENT3_NULL  = 0;
 
@@ -81,12 +81,10 @@ constexpr Event3_t EVENT_COMBINE = EVENT3_ID_22;
 constexpr Event3_t EVENT_WAIT_R1_L = EVENT3_ID_23;
 constexpr Event3_t EVENT_WAIT_R1_R = EVENT3_ID_24;
 
-
 constexpr Event3_t GET_PICK_KFS_EVENT = EVENT3_ID_25;
 
-
-constexpr Event3_t  EVENT_STICK_L_EDGE = EVENT3_ID_26;
-
+constexpr Event3_t  EVENT_STICK_L_EDGE_1 = EVENT3_ID_26;
+constexpr Event3_t  EVENT_STICK_L_EDGE_2 = EVENT3_ID_27;
 
 /*-----所有事件-----*/
 

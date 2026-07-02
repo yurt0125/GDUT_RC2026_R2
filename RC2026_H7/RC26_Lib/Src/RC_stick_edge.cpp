@@ -8,6 +8,7 @@ StickEdge::StickEdge(
 		data::RobotPose& pose_
 	)
 : 	stick_l_event(26, 0.01f, true, true),
+	stick_l_event_2(27, 0.01f, true, true),
 	c(c_),
 	p(p_),
 	user(gan_),

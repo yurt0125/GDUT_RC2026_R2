@@ -252,7 +252,7 @@ namespace path
 		}
 		
 		
-		return Go_To_Do(p, yaw, EVENT_STICK_L_EDGE);
+		return Go_To_Do(p, yaw, EVENT_STICK_L_EDGE_1);
 	}
 
 	
@@ -278,13 +278,15 @@ namespace path
 	
 	bool Navigation::Challenge_Go_To_Get_KFS_Ground(uint8_t num)
 	{
-		if (num == 0 || num > 3) return false;
 		
+		
+		if (num == 0 || num > 3) return false;
+		num++;
 		float yaw;
 		vector2d::Vector2D p;
 		
 		yaw = 0;
-		p = vector2d::Vector2D(11.825f - 0.375f - 0.35f, -(6.f - 0.6f - 0.175f) - (num - 1) * 0.7f);
+		p = vector2d::Vector2D(11.825f - 0.375f - 0.35f - 0.175f, -(6.f - 0.6f - 0.175f) + (num - 1) * 0.7f);
 		
 		return Go_To_Do(p, yaw, GET_LOW_0_KFS_READY_EVENT | GET_PICK_KFS_EVENT);
 	}
@@ -298,7 +300,7 @@ namespace path
 		if (data::Side::Is_Blue_Left_Side())
 		{
 			yaw = PI;
-			p = vector2d::Vector2D(12 - 0.98 - 0.8, -4.9);
+			p = vector2d::Vector2D(/*9.5 + 0.41 + 0.2*/10.17, -6 + 0.365 + 0.4 + 1.2);
 		}
 		else
 		{
@@ -317,8 +319,8 @@ namespace path
 		
 		if (data::Side::Is_Blue_Left_Side())
 		{
-			yaw = -HALF_PI;
-			p = vector2d::Vector2D(12 - 0.98 + 0.41, -4.9);
+			yaw = PI;
+			p = vector2d::Vector2D(/*9.5 + 0.41 + 0.2*/10.17, -6 + 0.365 + 0.4);
 		}
 		else
 		{

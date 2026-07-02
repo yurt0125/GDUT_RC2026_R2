@@ -44,6 +44,12 @@ public:
 			{
 				if (stick_l_event.Is_Trig())
 				{
+					y_pos = 0.09;
+					state = STICK_DOCK_TAKE_CTRL;
+				}
+				else if (stick_l_event_2.Is_Trig())
+				{
+					y_pos = -0.106;
 					state = STICK_DOCK_TAKE_CTRL;
 				}
 				break;
@@ -198,6 +204,8 @@ public:
 	
 private:
 	path::Event3 stick_l_event;
+	path::Event3 stick_l_event_2;
+	float y_pos = 0;
 	StickDockState state;
 	chassis::Omni4Chassis& c;
 	path::PathPlan3& p;

@@ -134,6 +134,11 @@ namespace path
 			}
 		}
 		
+		if (CHALLENG[dx].Is_Point_In(p))
+		{
+			return 13;
+		}
+		
 		return GRAPH_INVALID;
 	}
 

@@ -99,6 +99,8 @@ check::HeadCheck head_check(
 // 雷达数据接收
 ros::Radar radar(CDC_HS, 1, robot_pose);
 
+
+
 // 梅林路径接收，生成
 ros::BestPath best_path(CDC_HS, 7, navigation);
 
@@ -239,16 +241,6 @@ void Main_Task(void *argument)
 		float fusion_yaw = hwt101ct.Yaw();
 		robot_pose.Update_Orientation(&fusion_yaw, NULL, NULL);
 		
-		//uart_printf("%f,%f,%f\n", fusion_yaw, radar.Yaw(), hwt101ct.Delay_Yaw());
-		
-//		m2006d_can1_3_4.Set_Current(0);
-//		m3508d_can1_1_2.Set_Current(0);
-//		m2006_can1_5.Set_Current(0);
-
-//		m3508_can3_5.Set_Current(0);
-//		m3508_can3_6.Set_Current(0);
-		
-		
 		get_weapon_head.Auto_Get_Weapon_Head();
 		
 		stick_edge.Stick_Edge();
@@ -379,6 +371,8 @@ void Plan_Task(void *argument)
 	}
 	else if (data::BootArea::Is_Boot_At_Mc() == 0)
 	{
+		state = STATE_COMBINE_READY;
+		
 		// 挑战赛启动区
 		if (data::Side::Is_Blue_Left_Side())
 		{
@@ -417,83 +411,162 @@ void Plan_Task(void *argument)
 	}
 	else if (data::BootArea::Is_Boot_At_Mc() == 0)
 	{
-		//navigation.Pass_Do(vector2d::Vector2D(), );
-		
+		navigation.Pass_Do(vector2d::Vector2D(11, -2.5), -HALF_PI, EVENT3_NULL);
+		navigation.Challenge_Go_To_Get_KFS_Ground(3);
+		//navigation.Challenge_Go_To_Get_KFS_Ground(2);
+		//navigation.Challenge_Go_To_Get_KFS_Ground(1);
 	}
 	
 
-	
-	
+	uint16_t feedback_count = 0;
+	uint8_t feedback_data[10];
 	for (;;)
 	{
-		
-		switch (state)
+		feedback_count++;
+		if (feedback_count > 1000)
 		{
-			case STATE_PUT_2L:
+			int16_t x 		= (int16_t)(robot_pose.X() * 100);
+			int16_t y 		= (int16_t)(robot_pose.Y() * 100);
+			int16_t yaw 	= (int16_t)(robot_pose.Yaw() * 100);
+			int16_t cali_l 	= (uint16_t)(cali_laser.distance);
+			int16_t check_l = (uint16_t)(check_laser.distance);
+			
+			feedback_data[0] = x 		>> 8;
+			feedback_data[1] = x 			;
+			feedback_data[2] = y 		>> 8;
+			feedback_data[3] = y 			;
+			feedback_data[4] = yaw 	    >> 8;
+			feedback_data[5] = yaw 	  	  	;
+			feedback_data[6] = cali_l 	>> 8;
+			feedback_data[7] = cali_l 		;
+			feedback_data[8] = check_l  >> 8;
+			feedback_data[9] = check_l  	;
+			
+			CDC_HS.CDC_Send_Pkg(2, feedback_data, 10, 0);
+			feedback_count = 0;
+		}
+		
+		if (data::BootArea::Is_Boot_At_Mc() == 1)
+		{
+			switch (state)
 			{
-				// 放中间失败重试
-				if (putKFS.Put_First_Fail_Navi())
+				case STATE_PUT_2L:
 				{
-					state = STATE_AVOID_R1;
+					// 放中间失败重试
+					if (putKFS.Put_First_Fail_Navi())
+					{
+						state = STATE_AVOID_R1;
+					}
+					break;
 				}
-				break;
-			}
-			
-			case STATE_AVOID_R1:
-			{
-				// 避开r1
-				if (navigation.Go_To_Avoid_R1_In_ARENA())
+				
+				case STATE_AVOID_R1:
 				{
-					state = STATE_COMBINE_READY;
+					// 避开r1
+					if (navigation.Go_To_Avoid_R1_In_ARENA())
+					{
+						state = STATE_COMBINE_READY;
+					}
+					break;
 				}
-				break;
-			}
-			
-			case STATE_COMBINE_READY:
-			{
-				// 准备合体
-				if (combine_ready_cmd.Get_Cmd() && !com.Is_Combine())
+				
+				case STATE_COMBINE_READY:
 				{
-					navigation.Go_To_Combine_Ready();
-					
-					state = STATE_COMBINE;
+					// 准备合体
+					if (combine_ready_cmd.Get_Cmd() && !com.Is_Combine())
+					{
+						navigation.Go_To_Combine_Ready();
+						
+						state = STATE_COMBINE;
+					}
+					break;
 				}
-				break;
-			}
-			
-			
-			case STATE_COMBINE:
-			{
-				// 合体
-				if (combine_cmd.Get_Cmd() && !com.Is_Combine())
+				
+				
+				case STATE_COMBINE:
 				{
-					navigation.Go_To_Combine();
-					
-					state = STATE_PUT_3L;
+					// 合体
+					if (combine_cmd.Get_Cmd() && !com.Is_Combine())
+					{
+						navigation.Go_To_Combine();
+						
+						state = STATE_PUT_3L;
+					}
+					break;
 				}
-				break;
-			}
-			
-			
-			case STATE_PUT_3L:
-			{
-				// 放第三层命令
-				if (put_3L_cmd.Get_Cmd())
+				
+				
+				case STATE_PUT_3L:
 				{
-					path::Event3::Trig_Event(EVENT_PUT_KFS_3L_READY | EVENT_PUT_KFS_PUT);
-					
+					// 放第三层命令
+					if (put_3L_cmd.Get_Cmd())
+					{
+						path::Event3::Trig_Event(EVENT_PUT_KFS_3L_READY | EVENT_PUT_KFS_PUT);
+						
+						state = STATE_END;
+					}
+					break;
+				}
+				
+				
+				default:
+				{
 					state = STATE_END;
+					break;
 				}
-				break;
+				
 			}
-			
-			
-			default:
+		}
+		else if (data::BootArea::Is_Boot_At_Mc() == 0)
+		{
+			switch (state)
 			{
-				state = STATE_END;
-				break;
+				case STATE_COMBINE_READY:
+				{
+					// 准备合体
+					if (combine_ready_cmd.Get_Cmd() && !com.Is_Combine())
+					{
+						navigation.Challenge_Go_To_Combine_Ready();
+						
+						state = STATE_COMBINE;
+					}
+					break;
+				}
+				
+				
+				case STATE_COMBINE:
+				{
+					// 合体
+					if (combine_cmd.Get_Cmd() && !com.Is_Combine())
+					{
+						navigation.Challenge_Go_To_Combine();
+						
+						state = STATE_PUT_3L;
+					}
+					break;
+				}
+				
+				
+				case STATE_PUT_3L:
+				{
+					// 放第三层命令
+					if (put_3L_cmd.Get_Cmd())
+					{
+						path::Event3::Trig_Event(EVENT_PUT_KFS_3L_READY | EVENT_PUT_KFS_PUT);
+						
+						state = STATE_END;
+					}
+					break;
+				}
+				
+				
+				default:
+				{
+					state = STATE_END;
+					break;
+				}
+				
 			}
-			
 		}
 		
 		
@@ -519,7 +592,7 @@ void Motor_Config()
 	
 	m2006d_can1_3_4.	pid_pos.Pid_Param_Init(200, 0, 3, 		0, 0.002, 0, 9000, 500, 500, 500, 500, 	2000, 837.76f);
 	m3508d_can1_1_2.	pid_pos.Pid_Param_Init(100, 0, 0.005, 	0, 0.002, 0, 4000, 1000, 500, 500, 500, 1000, 314.16);
-	m2006_can1_5.		pid_pos.Pid_Param_Init(140, 0, 2, 		0, 0.002, 0, 9000, 500, 500, 500, 500, 	2000, 837.76f);
+	m2006_can1_5.		pid_pos.Pid_Param_Init(110, 0, 1.5, 		0, 0.002, 0, 9000, 500, 500, 500, 500, 	2000, 837.76f);
 	//dm4310_can1_0x12.	pid_pos.Pid_Param_Init(15, 0, 0.055, 0, 0.001, 0, 7, 5, 5, 5, 5, 20, 7);
 	dm4310_can1_0x12.	pid_pos.Pid_Param_Init(20, 0, 1.4, 		0, 0.001, 0, 27, 5, 5, 5, 5, 20, 5);
 	

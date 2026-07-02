@@ -221,6 +221,12 @@ namespace path
 			Area(vector2d::Vector2D(9.45, 6), vector2d::Vector2D(12, 6), vector2d::Vector2D(9.45, 0)),
 			Area(vector2d::Vector2D(9.45, 0), vector2d::Vector2D(12, 0), vector2d::Vector2D(9.45, -6))
 		}; /*对抗区*/
+		
+		static const inline Area CHALLENG[2] = 
+		{
+			Area(vector2d::Vector2D(9.45, 0), vector2d::Vector2D(12, 6), vector2d::Vector2D(9.45, 0)),
+			Area(vector2d::Vector2D(6.8, 0), vector2d::Vector2D(8, 0), vector2d::Vector2D(6.8, -1.2))
+		}; /*挑战赛启动区*/
 
 		
 		/*图（只读）*/
