@@ -6,9 +6,24 @@
 #include "RC_lift_chassis.h"
 #include "RC_navigation.h"
 #include "RC_path_plan3.h"
+#include "RC_QEO.h"
+#include "RC_data_pool.h"
+#include "RC_timer.h"
 
 namespace combine
 {
+	enum UncombineState : uint8_t
+	{
+		UNCOMBINE_DIS = 0,
+		UNCOMBINE_RESET,
+		UNCOMBINE_MOVE,
+		UNCOMBINE_END,
+	};
+	
+	
+	
+	
+	
 	
 	class Combine
     {
@@ -16,7 +31,10 @@ namespace combine
 		Combine(
 			chassis::Chassis& chassis_, 
 			chassis::LiftChassis& lift_,
-			path::PathPlan3& plan_
+			path::PathPlan3& plan_,
+			fusion::QEO& qeo_,
+			path::Navigation& nav_,
+			data::RobotPose& pose_
 		);
 		~Combine() = default;
 	
@@ -30,8 +48,19 @@ namespace combine
 		
 		bool uncombine_flag;
 	
+		UncombineState unc_state;
 	
 		path::PathPlan3& plan;
+	
+		fusion::QEO& qeo;
+	
+		data::RobotPose& pose;
+	
+		path::Navigation& nav;
+	
+		uint32_t last_time;
+	
+		const float target_y = -0.2f;
 	
 		bool is_combine;
     };

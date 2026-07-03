@@ -61,7 +61,7 @@ namespace path
 		bool Go_To_Dock();
 		bool Go_To_Combine();
 		bool Go_To_Combine_Ready();
-		bool Uncombine(vector2d::Vector2D p, float yaw);
+		//bool Uncombine(vector2d::Vector2D p, float yaw);
 		bool Go_To_Avoid_R1_In_ARENA();
 		
 		bool Go_To_Stick_Edge();
@@ -73,12 +73,14 @@ namespace path
 		bool Challenge_Go_To_Combine();
 		/*------------------------------------------------------------*/
 		
+		
+		void Close() { is_close = true; }
+		void Open() { is_close = false; }
     private:
 		uint8_t Dst_FreeSpace() const { return (head - tail - 1 + NAVIGATION_MAX_DESTINATION) % NAVIGATION_MAX_DESTINATION; }
 		uint8_t Dst_Num() const { return (tail - head + NAVIGATION_MAX_DESTINATION) % NAVIGATION_MAX_DESTINATION; }
 	
-		void Close() { is_close = true; }
-		void Open() { is_close = false; }
+		
 	
 		void Task_Process() override;
 		

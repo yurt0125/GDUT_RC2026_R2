@@ -40,7 +40,7 @@ namespace fusion
 			m2.Set_Pos_Zero();
 			m4.Set_Pos_Zero();
 		
-			//delta = delta.rotate(yaw - RAD45);
+			delta = delta.rotate(-RAD45);
 			
 			vel = delta * (1.f / 0.002f);
 			

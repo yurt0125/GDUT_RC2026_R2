@@ -5,6 +5,7 @@
 #include "RC_traj_track3.h"
 #include "RC_event3.h"
 #include "RC_QEO.h"
+#include "RC_QEO_mini.h"
 
 #ifdef __cplusplus
 namespace chassis
@@ -129,7 +130,7 @@ namespace chassis
 		LiftChassis(
 			motor::Motor& L_lift_, motor::Motor& R_lift_,
 			motor::Motor& L_wheel_, motor::Motor& R_wheel_,
-			chassis::Chassis& chassis_, fusion::QEO& qeo_
+			chassis::Chassis& chassis_, fusion::QEOmini& qeo_
 		);
 		~LiftChassis() = default;
 		
@@ -267,7 +268,7 @@ namespace chassis
 		
 		void Reset_Pos()
 		{
-			qeo.Set_X(0);
+			//qeo.Set_X(0);
 			qeo.Set_Y(0);
 		}
 		
@@ -303,7 +304,7 @@ namespace chassis
 		motor::Motor& R_wheel;
 		
 		chassis::Chassis& chassis;
-		fusion::QEO& qeo;
+		fusion::QEOmini& qeo;
 		
 		/*---------------------------*/
 		

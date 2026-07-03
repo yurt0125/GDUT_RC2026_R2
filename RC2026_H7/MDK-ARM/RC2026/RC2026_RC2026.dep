@@ -1434,7 +1434,7 @@ I (..\USB_DEVICE\App\usb_device.h)(0x68CB940A)
 I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h)(0x68AD6BF9)
 I (..\USB_DEVICE\Target\usbd_conf.h)(0x68CB940A)
 I (..\Core\Inc\gpio.h)(0x68CB9405)
-I (..\RC26_User\Inc\RC_init.h)(0x6A3B6E87)
+I (..\RC26_User\Inc\RC_init.h)(0x6A472C13)
 I (..\RC26_Api\Inc\RC_task.h)(0x6A054D67)
 I (..\RC26_Api\Inc\RC_can.h)(0x69EF0DD7)
 I (..\RC26_Api\Inc\RC_tim.h)(0x69EF0DD7)
@@ -1492,25 +1492,26 @@ I (..\RC26_Lib\Inc\RC_LiDAR.h)(0x6A0D757C)
 I (..\RC26_Lib\Inc\RC_omni_chassis.h)(0x6A321BD4)
 I (..\RC26_Lib\Inc\RC_vector2d.h)(0x69EF0B19)
 I (..\RC26_Api\Inc\RC_chassis.h)(0x6A321AA8)
-I (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A46078B)
+I (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A473AFB)
 I (..\RC26_Path\Inc\RC_traj_track3.h)(0x6A2D4223)
 I (..\RC26_Lib\Inc\RC_nonlinear_pid.h)(0x69EF0E83)
 I (..\RC26_Path\Inc\RC_head_ctrl.h)(0x6A228654)
 I (..\RC26_Path\Inc\RC_event3.h)(0x6A466F81)
-I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A2E9990)
+I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A4738B8)
+I (..\RC26_Lib\Inc\RC_QEO_mini.h)(0x6A47394B)
 I (..\RC26_Lib\Inc\RC_head_check.h)(0x6A3B9F90)
 I (..\RC26_Lib\Inc\RC_HWT101CT.h)(0x6A41EA9A)
 I (..\RC26_Lib\Inc\RC_imu_fusion.h)(0x6A41EA9A)
 I (..\RC26_Lib\Inc\RC_mini_laser.h)(0x6A26C608)
 I (..\RC26_Lib\Inc\RC_fusion_ctrl.h)(0x6A1E7914)
-I (..\RC26_Lib\Inc\RC_combine.h)(0x6A2D4A57)
+I (..\RC26_Lib\Inc\RC_combine.h)(0x6A476138)
 I (..\RC26_Path\Inc\RC_traj_plan3.h)(0x6A12A028)
 I (..\RC26_Path\Inc\RC_path3.h)(0x6A0E885B)
 I (..\RC26_Path\Inc\RC_curve.h)(0x6A128FAD)
 I (..\RC26_Path\Inc\RC_path_plan3.h)(0x6A2D4223)
 I (..\RC26_Path\Inc\RC_map_graph.h)(0x6A46818E)
 I (..\RC26_Path\Inc\RC_graph_plan.h)(0x6A23A789)
-I (..\RC26_Path\Inc\RC_navigation.h)(0x6A44D4EA)
+I (..\RC26_Path\Inc\RC_navigation.h)(0x6A474CA5)
 I (..\RC26_Lib\Inc\RC_IR_communication.h)(0x6A33E436)
 I (..\RC26_Gantry\Inc\RC_gantry.h)(0x6A45D0A5)
 I (..\RC26_Gantry\Inc\RC_suction.h)(0x6A040DE8)
@@ -3018,8 +3019,8 @@ I (..\RC26_Api\Inc\RC_chassis.h)(0x6A321AA8)
 I (..\RC26_Api\Inc\RC_timer.h)(0x6A1C1FF5)
 I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
 F (..\RC26_Lib\Inc\RC_omni_chassis.h)(0x6A321BD4)()
-F (..\RC26_Lib\Src\RC_lift_chassis.cpp)(0x6A46076B)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_lift_chassis.o -MMD)
-I (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A46078B)
+F (..\RC26_Lib\Src\RC_lift_chassis.cpp)(0x6A473AFB)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_lift_chassis.o -MMD)
+I (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A473AFB)
 I (..\RC26_Motor\Inc\RC_motor.h)(0x6A1422AC)
 I (..\RC26_Lib\Inc\RC_pid.h)(0x69EF0DD8)
 I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\arm_math.h)(0x66A6B132)
@@ -3106,7 +3107,7 @@ I (..\RC26_Path\Inc\RC_traj_track3.h)(0x6A2D4223)
 I (..\RC26_Lib\Inc\RC_nonlinear_pid.h)(0x69EF0E83)
 I (..\RC26_Path\Inc\RC_head_ctrl.h)(0x6A228654)
 I (..\RC26_Path\Inc\RC_event3.h)(0x6A466F81)
-I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A2E9990)
+I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A4738B8)
 I (..\RC26_Motor\Inc\RC_dji_motor.h)(0x6A1D43AD)
 I (..\RC26_Ros_Interface\Inc\RC_radar.h)(0x6A1D7262)
 I (..\RC26_Api\Inc\RC_cdc.h)(0x6A05B98C)
@@ -3119,7 +3120,8 @@ I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x68AD6BF9)
 I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x68AD6BF9)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x68AD6BFD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x68AD6BFD)
-F (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A46078B)()
+I (..\RC26_Lib\Inc\RC_QEO_mini.h)(0x6A47394B)
+F (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A473AFB)()
 F (..\RC26_Lib\Src\RC_HWT101CT.cpp)(0x6A1D1354)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_hwt101ct.o -MMD)
 I (..\RC26_Lib\Inc\RC_HWT101CT.h)(0x6A41EA9A)
 I (..\RC26_Api\Inc\RC_serial.h)(0x69EF0DD8)
@@ -3270,7 +3272,7 @@ I (..\RC26_Lib\Inc\RC_vector2d.h)(0x69EF0B19)
 I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
 F (..\RC26_Lib\Inc\RC_head_check.h)(0x6A3B9F90)()
 F (..\RC26_Lib\Src\RC_QEO.cpp)(0x6A1E7895)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_qeo.o -MMD)
-I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A2E9990)
+I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A4738B8)
 I (..\RC26_Motor\Inc\RC_dji_motor.h)(0x6A1D43AD)
 I (..\RC26_Motor\Inc\RC_motor.h)(0x6A1422AC)
 I (..\RC26_Lib\Inc\RC_pid.h)(0x69EF0DD8)
@@ -3363,7 +3365,7 @@ I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x68AD6BF9)
 I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x68AD6BF9)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x68AD6BFD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x68AD6BFD)
-F (..\RC26_Lib\Inc\RC_QEO.h)(0x6A2E9990)()
+F (..\RC26_Lib\Inc\RC_QEO.h)(0x6A4738B8)()
 F (..\RC26_Lib\Src\RC_imu_fusion.cpp)(0x6A41EAD9)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_imu_fusion.o -MMD)
 I (..\RC26_Lib\Inc\RC_imu_fusion.h)(0x6A41EA9A)
 I (..\RC26_Lib\Inc\RC_HWT101CT.h)(0x6A41EA9A)
@@ -3515,8 +3517,8 @@ I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\filtering_functions.h)(0x6
 I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\quaternion_math_functions.h)(0x66A6B132)
 I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\window_functions.h)(0x66A6B132)
 F (..\RC26_Lib\Inc\RC_mini_laser.h)(0x6A26C608)()
-F (..\RC26_Lib\Src\RC_combine.cpp)(0x6A2D4B83)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_combine.o -MMD)
-I (..\RC26_Lib\Inc\RC_combine.h)(0x6A2D4A57)
+F (..\RC26_Lib\Src\RC_combine.cpp)(0x6A476148)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_combine.o -MMD)
+I (..\RC26_Lib\Inc\RC_combine.h)(0x6A476138)
 I (..\RC26_Path\Inc\RC_event3.h)(0x6A466F81)
 I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\arm_math.h)(0x66A6B132)
 I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\arm_math_types.h)(0x66A6B132)
@@ -3599,12 +3601,12 @@ I (..\Core\Inc\tim.h)(0x69EF0364)
 I (..\RC26_Api\Inc\RC_timer.h)(0x6A1C1FF5)
 I (..\RC26_Lib\Inc\RC_vector2d.h)(0x69EF0B19)
 I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
-I (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A46078B)
+I (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A473AFB)
 I (..\Core\Inc\gpio.h)(0x68CB9405)
 I (..\RC26_Path\Inc\RC_traj_track3.h)(0x6A2D4223)
 I (..\RC26_Lib\Inc\RC_nonlinear_pid.h)(0x69EF0E83)
 I (..\RC26_Path\Inc\RC_head_ctrl.h)(0x6A228654)
-I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A2E9990)
+I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A4738B8)
 I (..\RC26_Motor\Inc\RC_dji_motor.h)(0x6A1D43AD)
 I (..\RC26_Ros_Interface\Inc\RC_radar.h)(0x6A1D7262)
 I (..\RC26_Api\Inc\RC_cdc.h)(0x6A05B98C)
@@ -3617,14 +3619,15 @@ I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x68AD6BF9)
 I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x68AD6BF9)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x68AD6BFD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x68AD6BFD)
-I (..\RC26_Path\Inc\RC_navigation.h)(0x6A44D4EA)
+I (..\RC26_Lib\Inc\RC_QEO_mini.h)(0x6A47394B)
+I (..\RC26_Path\Inc\RC_navigation.h)(0x6A474CA5)
 I (..\RC26_Path\Inc\RC_map_graph.h)(0x6A46818E)
 I (..\RC26_Path\Inc\RC_graph_plan.h)(0x6A23A789)
 I (..\RC26_Path\Inc\RC_path_plan3.h)(0x6A2D4223)
 I (..\RC26_Path\Inc\RC_path3.h)(0x6A0E885B)
 I (..\RC26_Path\Inc\RC_curve.h)(0x6A128FAD)
 I (..\RC26_Path\Inc\RC_traj_plan3.h)(0x6A12A028)
-F (..\RC26_Lib\Inc\RC_combine.h)(0x6A2D4A57)()
+F (..\RC26_Lib\Inc\RC_combine.h)(0x6A476138)()
 F (..\RC26_Lib\Src\RC_fusion_ctrl.cpp)(0x6A1E78A9)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_fusion_ctrl.o -MMD)
 I (..\RC26_Lib\Inc\RC_fusion_ctrl.h)(0x6A1E7914)
 I (..\RC26_Lib\Inc\RC_imu_fusion.h)(0x6A41EA9A)
@@ -3714,7 +3717,7 @@ I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x68AD6BF9
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x68AD6BFD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x68AD6BFD)
 I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
-I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A2E9990)
+I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A4738B8)
 I (..\RC26_Motor\Inc\RC_dji_motor.h)(0x6A1D43AD)
 I (..\RC26_Motor\Inc\RC_motor.h)(0x6A1422AC)
 I (..\RC26_Lib\Inc\RC_pid.h)(0x69EF0DD8)
@@ -3860,6 +3863,88 @@ I (..\RC26_Gantry\Inc\RC_gripper.h)(0x6A4288FC)
 I (..\RC26_Motor\Inc\RC_dji_motor.h)(0x6A1D43AD)
 I (..\RC26_Lib\Inc\RC_IR_communication.h)(0x6A33E436)
 F (..\RC26_Lib\Inc\RC_stick_edge.h)(0x6A467019)()
+F (..\RC26_Lib\Src\RC_QEO_mini.cpp)(0x6A472934)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_qeo_mini.o -MMD)
+I (..\RC26_Lib\Inc\RC_QEO_mini.h)(0x6A47394B)
+I (..\RC26_Motor\Inc\RC_dji_motor.h)(0x6A1D43AD)
+I (..\RC26_Motor\Inc\RC_motor.h)(0x6A1422AC)
+I (..\RC26_Lib\Inc\RC_pid.h)(0x69EF0DD8)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\arm_math.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\arm_math_types.h)(0x66A6B132)
+I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x68AD6C07)
+I (..\Drivers\CMSIS\Include\cmsis_armclang.h)(0x68AD6C07)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\arm_math_memory.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\none.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\utils.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\basic_math_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\interpolation_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\bayes_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\statistics_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\fast_math_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\matrix_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\complex_math_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\controller_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\support_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\distance_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\svm_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\svm_defines.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\transform_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\filtering_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\quaternion_math_functions.h)(0x66A6B132)
+I (D:\Keil5\ARM\PACK\ARM\CMSIS-DSP\1.16.2\Include\dsp\window_functions.h)(0x66A6B132)
+I (..\RC26_Api\Inc\RC_serial.h)(0x69EF0DD8)
+I (..\Core\Inc\usart.h)(0x6A280191)
+I (..\Core\Inc\main.h)(0x6A3F79DE)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h)(0x68AD6C4E)
+I (..\Core\Inc\stm32h7xx_hal_conf.h)(0x69DF6FA1)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_def.h)(0x68AD6C4E)
+I (..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\stm32h7xx.h)(0x68AD6C4F)
+I (..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\stm32h723xx.h)(0x68AD6C4F)
+I (..\Drivers\CMSIS\Include\core_cm7.h)(0x68AD6C07)
+I (..\Drivers\CMSIS\Device\ST\STM32H7xx\Include\system_stm32h7xx.h)(0x68AD6C4F)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc_ex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_gpio_ex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_dma_ex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_mdma.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_exti.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_cortex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_fdcan.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_cordic.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_flash_ex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_hsem.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_i2c.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_i2c_ex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pwr_ex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_ll_usb.h)(0x68AD6C4E)
+I (..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_pcd_ex.h)(0x68AD6C4E)
+I (..\RC26_Lib\Inc\RC_filter.h)(0x6A0945FB)
+I (..\RC26_Api\Inc\RC_can.h)(0x69EF0DD7)
+I (..\RC26_Api\Inc\RC_task.h)(0x6A054D67)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h)(0x68AD6BFD)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x68AD6BFD)
+I (..\Core\Inc\FreeRTOSConfig.h)(0x6A01E092)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h)(0x68AD6BFD)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h)(0x68AD6BFD)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h)(0x68AD6BFD)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h)(0x681DBC33)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h)(0x68AD6BFD)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h)(0x68AD6BFD)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h)(0x68AD6BFD)
+I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x68AD6BFD)
+I (..\RC26_Api\Inc\RC_tim.h)(0x69EF0DD7)
+I (..\Core\Inc\tim.h)(0x69EF0364)
+I (..\RC26_Lib\Inc\RC_vector2d.h)(0x69EF0B19)
+F (..\RC26_Lib\Inc\RC_QEO_mini.h)(0x6A47394B)()
 F (..\RC26_Motor\Src\RC_motor.cpp)(0x6A141FD1)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_motor.o -MMD)
 I (..\RC26_Motor\Inc\RC_motor.h)(0x6A1422AC)
 I (..\RC26_Lib\Inc\RC_pid.h)(0x69EF0DD8)
@@ -5526,10 +5611,10 @@ I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x68AD6BF9)
 I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x68AD6BF9)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x68AD6BFD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x68AD6BFD)
-I (..\RC26_Path\Inc\RC_navigation.h)(0x6A44D4EA)
+I (..\RC26_Path\Inc\RC_navigation.h)(0x6A474CA5)
 F (..\RC26_Path\Inc\RC_graph_plan.h)(0x6A23A789)()
-F (..\RC26_Path\Src\RC_navigation.cpp)(0x6A469A93)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_navigation.o -MMD)
-I (..\RC26_Path\Inc\RC_navigation.h)(0x6A44D4EA)
+F (..\RC26_Path\Src\RC_navigation.cpp)(0x6A474CCF)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_navigation.o -MMD)
+I (..\RC26_Path\Inc\RC_navigation.h)(0x6A474CA5)
 I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
 I (..\RC26_Api\Inc\RC_task.h)(0x6A054D67)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h)(0x68AD6BFD)
@@ -5620,7 +5705,7 @@ I (..\RC26_Path\Inc\RC_traj_plan3.h)(0x6A12A028)
 I (..\RC26_Path\Inc\RC_traj_track3.h)(0x6A2D4223)
 I (..\RC26_Lib\Inc\RC_nonlinear_pid.h)(0x69EF0E83)
 I (..\RC26_Path\Inc\RC_head_ctrl.h)(0x6A228654)
-F (..\RC26_Path\Inc\RC_navigation.h)(0x6A44D4EA)()
+F (..\RC26_Path\Inc\RC_navigation.h)(0x6A474CA5)()
 F (..\RC26_Path\Src\RC_point_lock.cpp)(0x6A1C1FB0)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_point_lock.o -MMD)
 I (..\RC26_Path\Inc\RC_point_lock.h)(0x6A1C1FB0)
 I (..\RC26_Lib\Inc\RC_nonlinear_pid.h)(0x69EF0E83)
@@ -6010,7 +6095,7 @@ I (..\Core\Inc\gpio.h)(0x68CB9405)
 I (..\RC26_Api\Inc\RC_timer.h)(0x6A1C1FF5)
 I (..\RC26_Path\Inc\RC_event3.h)(0x6A466F81)
 I (..\RC26_Lib\Inc\RC_mini_laser.h)(0x6A26C608)
-I (..\RC26_Path\Inc\RC_navigation.h)(0x6A44D4EA)
+I (..\RC26_Path\Inc\RC_navigation.h)(0x6A474CA5)
 I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
 I (..\RC26_Path\Inc\RC_map_graph.h)(0x6A46818E)
 I (..\RC26_Lib\Inc\RC_vector2d.h)(0x69EF0B19)
@@ -6586,7 +6671,7 @@ I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h)(0x68AD6BF9)
 I (..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h)(0x68AD6BF9)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h)(0x68AD6BFD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h)(0x68AD6BFD)
-I (..\RC26_Path\Inc\RC_navigation.h)(0x6A44D4EA)
+I (..\RC26_Path\Inc\RC_navigation.h)(0x6A474CA5)
 I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
 I (..\RC26_Api\Inc\RC_timer.h)(0x6A1C1FF5)
 I (..\Core\Inc\tim.h)(0x69EF0364)
@@ -6909,8 +6994,8 @@ I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
 I (..\RC26_Api\Inc\RC_timer.h)(0x6A1C1FF5)
 I (..\Core\Inc\tim.h)(0x69EF0364)
 F (..\RC26_Ros_Interface\Inc\RC_get_data.h)(0x6A449C06)()
-F (..\RC26_User\Src\RC_init.cpp)(0x6A46984D)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_init.o -MMD)
-I (..\RC26_User\Inc\RC_init.h)(0x6A3B6E87)
+F (..\RC26_User\Src\RC_init.cpp)(0x6A4761BD)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_init.o -MMD)
+I (..\RC26_User\Inc\RC_init.h)(0x6A472C13)
 I (..\RC26_Api\Inc\RC_task.h)(0x6A054D67)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h)(0x68AD6BFD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x68AD6BFD)
@@ -7018,20 +7103,21 @@ I (..\RC26_Lib\Inc\RC_LiDAR.h)(0x6A0D757C)
 I (..\RC26_Lib\Inc\RC_omni_chassis.h)(0x6A321BD4)
 I (..\RC26_Lib\Inc\RC_vector2d.h)(0x69EF0B19)
 I (..\RC26_Api\Inc\RC_chassis.h)(0x6A321AA8)
-I (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A46078B)
+I (..\RC26_Lib\Inc\RC_lift_chassis.h)(0x6A473AFB)
 I (..\RC26_Path\Inc\RC_traj_track3.h)(0x6A2D4223)
 I (..\RC26_Lib\Inc\RC_nonlinear_pid.h)(0x69EF0E83)
 I (..\RC26_Path\Inc\RC_head_ctrl.h)(0x6A228654)
 I (..\RC26_Path\Inc\RC_event3.h)(0x6A466F81)
-I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A2E9990)
+I (..\RC26_Lib\Inc\RC_QEO.h)(0x6A4738B8)
 I (..\RC26_Ros_Interface\Inc\RC_radar.h)(0x6A1D7262)
+I (..\RC26_Lib\Inc\RC_QEO_mini.h)(0x6A47394B)
 I (..\RC26_Lib\Inc\RC_head_check.h)(0x6A3B9F90)
 I (..\RC26_Lib\Inc\RC_HWT101CT.h)(0x6A41EA9A)
 I (..\RC26_Lib\Inc\RC_imu_fusion.h)(0x6A41EA9A)
 I (..\RC26_Lib\Inc\RC_mini_laser.h)(0x6A26C608)
 I (..\RC26_Lib\Inc\RC_fusion_ctrl.h)(0x6A1E7914)
-I (..\RC26_Lib\Inc\RC_combine.h)(0x6A2D4A57)
-I (..\RC26_Path\Inc\RC_navigation.h)(0x6A44D4EA)
+I (..\RC26_Lib\Inc\RC_combine.h)(0x6A476138)
+I (..\RC26_Path\Inc\RC_navigation.h)(0x6A474CA5)
 I (..\RC26_Path\Inc\RC_map_graph.h)(0x6A46818E)
 I (..\RC26_Path\Inc\RC_graph_plan.h)(0x6A23A789)
 I (..\RC26_Path\Inc\RC_path_plan3.h)(0x6A2D4223)
@@ -7052,7 +7138,7 @@ I (..\RC26_Ros_Interface\Inc\RC_best_path.h)(0x6A22890D)
 I (..\RC26_Ros_Interface\Inc\RC_wait_R1.h)(0x6A256384)
 I (..\RC26_Ros_Interface\Inc\RC_get_data.h)(0x6A449C06)
 I (..\Core\Inc\fdcan.h)(0x68CB9409)
-F (..\RC26_User\Inc\RC_init.h)(0x6A3B6E87)()
+F (..\RC26_User\Inc\RC_init.h)(0x6A472C13)()
 F (..\RC26_User\Src\RC_data_pool.cpp)(0x6A351213)(-xc++ -std=gnu++17 --target=arm-arm-none-eabi -mcpu=cortex-m7 -mfpu=fpv5-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar -fno-exceptions-gdwarf-4 -O1 -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../USB_DEVICE/App -I ../USB_DEVICE/Target -I ../Drivers/STM32H7xx_HAL_Driver/Inc -I ../Drivers/STM32H7xx_HAL_Driver/Inc/Legacy -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I ../Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Inc -I ../Drivers/CMSIS/Device/ST/STM32H7xx/Include -I ../Drivers/CMSIS/Include -I ../RC26_Lib/Inc -I ../RC26_User/Inc -I ../RC26_Motor/Inc -I ../RC26_Ros_Interface/Inc -I ../RC26_Api/Inc -I ../RC26_Path/Inc -I ../RC26_Gantry/Inc-I./RTE/_RC2026-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/Include-ID:/Keil5/ARM/PACK/ARM/CMSIS-DSP/1.16.2/PrivateInclude-ID:/Keil5/ARM/PACK/ARM/CMSIS/6.1.0/CMSIS/Core/Include-D__UVISION_VERSION="541" -DSTM32H723xx -D_RTE_ -DUSE_PWR_LDO_SUPPLY -DUSE_HAL_DRIVER -DSTM32H723xx -D__FPU_PRESENT="1U" -D__VFP_FP__="1" -DARM_MATH_CM7-o rc2026/rc_data_pool.o -MMD)
 I (..\RC26_User\Inc\RC_data_pool.h)(0x6A449C06)
 I (..\RC26_Api\Inc\RC_task.h)(0x6A054D67)

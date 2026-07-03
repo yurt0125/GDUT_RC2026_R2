@@ -144,11 +144,19 @@ fusion::QEO chassis_qeo(
 	radar
 );
 
+
+fusion::QEOmini wheel_qeo(
+	m2006_can3_7,
+	m2006_can3_8,
+	tim4_500hz
+);
+
+
 // 抬升
 chassis::LiftChassis lift(
 	m3508_can3_5, m3508_can3_6,
 	m2006_can3_7, m2006_can3_8,
-	omni_4_chassis, chassis_qeo
+	omni_4_chassis, wheel_qeo
 );
 
 
@@ -198,7 +206,10 @@ gantry::Aim_Ctrl aim(
 combine::Combine com(
 	omni_4_chassis, 
 	lift,
-	path_plan
+	path_plan,
+	chassis_qeo,
+	navigation,
+	robot_pose
 );
 
 
@@ -215,6 +226,7 @@ StickEdge stick_edge(
 IR::IRCmd combine_ready_cmd(2);
 IR::IRCmd combine_cmd(3);
 IR::IRCmd put_3L_cmd(4);
+IR::IRCmd uncombine_cmd(8);
  
 /*==================Main_Task==================*/
 // 方波发生
@@ -411,8 +423,10 @@ void Plan_Task(void *argument)
 	}
 	else if (data::BootArea::Is_Boot_At_Mc() == 0)
 	{
-		navigation.Pass_Do(vector2d::Vector2D(11, -2.5), -HALF_PI, EVENT3_NULL);
+		navigation.Pass_Do(vector2d::Vector2D(11, -2.5), 0, EVENT3_NULL);
 		navigation.Challenge_Go_To_Get_KFS_Ground(3);
+		
+		
 		//navigation.Challenge_Go_To_Get_KFS_Ground(2);
 		//navigation.Challenge_Go_To_Get_KFS_Ground(1);
 	}
@@ -428,8 +442,8 @@ void Plan_Task(void *argument)
 			int16_t x 		= (int16_t)(robot_pose.X() * 100);
 			int16_t y 		= (int16_t)(robot_pose.Y() * 100);
 			int16_t yaw 	= (int16_t)(robot_pose.Yaw() * 100);
-			int16_t cali_l 	= (uint16_t)(cali_laser.distance);
-			int16_t check_l = (uint16_t)(check_laser.distance);
+			int16_t cali_l 	= (int16_t)(cali_laser.distance);
+			int16_t check_l = (int16_t)(check_laser.distance);
 			
 			feedback_data[0] = x 		>> 8;
 			feedback_data[1] = x 			;
@@ -553,6 +567,12 @@ void Plan_Task(void *argument)
 					if (put_3L_cmd.Get_Cmd())
 					{
 						path::Event3::Trig_Event(EVENT_PUT_KFS_3L_READY | EVENT_PUT_KFS_PUT);
+						
+						//state = STATE_END;
+					}
+					else if (uncombine_cmd.Get_Cmd())
+					{
+						path::Event3::Trig_Event(EVENT_COMBINE);
 						
 						state = STATE_END;
 					}

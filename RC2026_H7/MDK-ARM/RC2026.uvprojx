@@ -1177,6 +1177,16 @@
               <FileType>5</FileType>
               <FilePath>..\RC26_Lib\Inc\RC_stick_edge.h</FilePath>
             </File>
+            <File>
+              <FileName>RC_QEO_mini.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\RC26_Lib\Src\RC_QEO_mini.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>RC_QEO_mini.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\RC26_Lib\Inc\RC_QEO_mini.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

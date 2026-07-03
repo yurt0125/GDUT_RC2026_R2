@@ -5,7 +5,7 @@ namespace chassis
 	LiftChassis::LiftChassis(
 		motor::Motor& L_lift_, motor::Motor& R_lift_,
 		motor::Motor& L_wheel_, motor::Motor& R_wheel_,
-		chassis::Chassis& chassis_, fusion::QEO& qeo_
+		chassis::Chassis& chassis_, fusion::QEOmini& qeo_
 	) : L_lift(L_lift_), R_lift(R_lift_), chassis(chassis_), qeo(qeo_), L_wheel(L_wheel_), R_wheel(R_wheel_),
 	lift_event{
 		path::Event3(5 , 0.1f, false, false),	  // EVENT_UP_2_READY_L
@@ -61,8 +61,8 @@ namespace chassis
 
 	
 	
-	constexpr float LIFT_CHASSIS_UP_DIS = 0.35f;
-	constexpr float LIFT_CHASSIS_DOWN_DIS = 0.3f;
+	constexpr float LIFT_CHASSIS_UP_DIS = 0.35f * 0.707f;
+	constexpr float LIFT_CHASSIS_DOWN_DIS = 0.3f * 0.707f;
 
 	void LiftChassis::Lift(LiftAction a_, LiftHeigth h_, LiftDir d_, bool trig)
 	{
