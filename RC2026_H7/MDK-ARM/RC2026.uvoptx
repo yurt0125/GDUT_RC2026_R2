@@ -325,6 +325,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>uncombine_cmd</ItemText>
         </Ww>
+        <Ww>
+          <count>34</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>get_weapon_head</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>

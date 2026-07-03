@@ -114,8 +114,10 @@ namespace path
 	constexpr float GET_WEAPON_HEAD_X = 0.95;
 	constexpr float GET_WEAPON_HEAD_DIS = 1.0;
 	
-	bool Navigation::Go_To_Get_Weapon_Head()
+	bool Navigation::Go_To_Get_Weapon_Head(uint8_t n)
 	{
+		if (n == 0 || n > 3) return false;
+		
 		float yaw;
 		vector2d::Vector2D p;
 		
@@ -132,7 +134,24 @@ namespace path
 			p.y() = (MapGraph::FIELD_WIDTH - GET_WEAPON_HEAD_DIS);
 		}
 		
-		return Go_To_Do(p, yaw, EVENT_GET_WEAPON_HEAD);
+		Event3_t event;
+		
+		
+		if (n == 1)
+		{
+			event = EVENT_GET_WEAPON_HEAD_1;
+		}
+		else if (n == 2)
+		{
+			event = EVENT_GET_WEAPON_HEAD_2;
+		}
+		else
+		{
+			event = EVENT_GET_WEAPON_HEAD_3;
+		}
+		
+		
+		return Go_To_Do(p, yaw, event);
 	}
 	
 	bool Navigation::Go_To_Dock()
@@ -143,15 +162,15 @@ namespace path
 		if (data::Side::Is_Blue_Left_Side())
 		{
 			yaw = HALF_PI;
-			p = vector2d::Vector2D(1, -4);
+			p = vector2d::Vector2D(0.5, -5.2);
 		}
 		else
 		{
 			yaw = -HALF_PI;
-			p = vector2d::Vector2D(1, 4);
+			p = vector2d::Vector2D(0.5, 5.2);
 		}
 		
-		return Go_To_Do(p, yaw, EVENT_DOCK);
+		return Go_To_Do(p, yaw, EVENT_STICK_L_EDGE_2);
 	}
 	
 	

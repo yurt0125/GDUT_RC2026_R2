@@ -72,7 +72,7 @@ constexpr Event3_t EVENT_PUT_KFS_2L_READY = EVENT3_ID_17;
 constexpr Event3_t EVENT_PUT_KFS_3L_READY = EVENT3_ID_18;
 constexpr Event3_t EVENT_PUT_KFS_PUT = 		EVENT3_ID_19;
 
-constexpr Event3_t EVENT_GET_WEAPON_HEAD = EVENT3_ID_20;
+constexpr Event3_t EVENT_GET_WEAPON_HEAD_1 = EVENT3_ID_20;
 
 constexpr Event3_t EVENT_DOCK = EVENT3_ID_21;
 
@@ -85,6 +85,12 @@ constexpr Event3_t GET_PICK_KFS_EVENT = EVENT3_ID_25;
 
 constexpr Event3_t  EVENT_STICK_L_EDGE_1 = EVENT3_ID_26;
 constexpr Event3_t  EVENT_STICK_L_EDGE_2 = EVENT3_ID_27;
+
+constexpr Event3_t EVENT_GET_WEAPON_HEAD_2 = EVENT3_ID_28;
+constexpr Event3_t EVENT_GET_WEAPON_HEAD_3 = EVENT3_ID_29;
+
+
+
 
 /*-----所有事件-----*/
 

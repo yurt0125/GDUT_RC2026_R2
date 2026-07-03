@@ -57,7 +57,7 @@ namespace path
 		/*------------------------------------------------------------*/
 		bool Go_To_Get_KFS(uint8_t kfs_node, Direction get_dir);
 		bool Go_To_Put_KFS_2L(uint8_t col); /*放二层， 1 ~ 3 列，靠近梅林大*/
-		bool Go_To_Get_Weapon_Head();
+		bool Go_To_Get_Weapon_Head(uint8_t n);
 		bool Go_To_Dock();
 		bool Go_To_Combine();
 		bool Go_To_Combine_Ready();

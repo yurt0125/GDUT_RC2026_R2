@@ -13,7 +13,11 @@ GetWeaponHead::GetWeaponHead(
     Computer_Side computer_side_,
     Computer_Mode computer_mode_
     ):
-    weapon_event(20, 0.8f, true, false),
+    weapon_event{
+        {20, 0.8f, true, false},
+        {28, 0.8f, true, false},
+        {29, 0.8f, true, false}
+    },
     path_plan(path_plan_), 
     head_ctrl(head_ctrl_),
     pose(pose_), 
@@ -49,13 +53,26 @@ GetWeaponHead::GetWeaponHead(
 }
 
 void GetWeaponHead::Auto_Get_Weapon_Head() {
-
-    if (weapon_event.Is_Trig() && gantry_state == GANTRY_STATE::Gantry_Idle) {
-        Pick(pick_num); 
-        path_plan.Disable();
-        head_ctrl.Enable();
-        Set_Yaw(chassis_target_yaw);
+    for(int i = 0;i<3;i++) {//red 123 blue 456
+        if (weapon_event[i].Is_Trig() && gantry_state == GANTRY_STATE::Gantry_Idle) {
+			
+			pick_num = i + 1;
+			
+			if(computer_side == Computer_Side::BLUE_SIDE){
+				pick_num = pick_num + 3;
+			}
+			
+            Pick(pick_num); 
+            path_plan.Disable();
+            head_ctrl.Enable();
+            Set_Yaw(chassis_target_yaw);
+            weapon_event_index = i;
+			
+            break;
+        }
     }
+
+
 
     // 更新curr_x和curr_y
     curr_x = pose.X() + RADAR_ERROR_X;
@@ -200,8 +217,8 @@ void GetWeaponHead::Auto_Get_Weapon_Head() {
       
         if(PICK_SUCCESS_FLAG) {
             gantry_state = GANTRY_STATE::Gantry_Restoration_X;
-            weapon_event.Finish();
-              path_plan.Enable();
+            weapon_event[weapon_event_index].Finish();
+            path_plan.Enable();
             // head_ctrl.Disable();
             chassis_state = CHASSIS_STATE::Chassis_Idle;
         }

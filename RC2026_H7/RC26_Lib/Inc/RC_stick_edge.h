@@ -203,16 +203,19 @@ public:
 			
 			case DOCK_SET_POS:
 			{
-				user.Set_X(0.0);
-				user.Set_Y(0);
-				user.Set_Z(0.06);
-				user.Set_P_Max_T(3);
-				user.Set_P(0.2);
-				
-				if (ir_cmd.Get_Cmd())
+				if (user.Take_Control())
 				{
-					state = DOCK_OPEN;
-					last_time = timer::Timer::Get_TimeStamp();
+					user.Set_X(0.0);
+					user.Set_Y(0);
+					user.Set_Z(0.06);
+					user.Set_P_Max_T(3);
+					user.Set_P(0.2);
+					
+					if (ir_cmd.Get_Cmd())
+					{
+						state = DOCK_OPEN;
+						last_time = timer::Timer::Get_TimeStamp();
+					}
 				}
 				break;
 			}
@@ -236,7 +239,7 @@ public:
 				user.Set_P_Max_T(27);
 				user.Set_Reset_Pos();
 				user.Give_Control();
-				stick_l_event.Finish();
+				stick_l_event_2.Finish();
 				
 				state = STICK_DOCK_RESET;
 				break;

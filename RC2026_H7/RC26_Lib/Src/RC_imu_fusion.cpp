@@ -65,12 +65,12 @@ namespace fusion
 				
 				
 				
-				if (fabsf(error) > (float)(15.0 / 180.0 * PI))
+				if (fabsf(error) > (float)(20.0 / 180.0 * PI))
 				{
 					imu.Set_Yaw(radar_yaw);
 				}
 				
-				if (!reset_flag && fabsf(error) > (float)(4.0 / 180.0 * PI) && fabs_imu_w < 0.05f)
+				if (!reset_flag && fabsf(error) > (float)(5.0 / 180.0 * PI) && fabs_imu_w < 0.05f)
 				{
 					reset_flag = true;
 					last_time = timer::Timer::Get_TimeStamp();
@@ -78,7 +78,7 @@ namespace fusion
 				
 				if (reset_flag && timer::Timer::Get_DeltaTime(last_time) > 1000000) // 100ms
 				{
-					if (fabsf(error) > (float)(4.0 / 180.0 * PI) && fabs_imu_w < 0.05f)
+					if (fabsf(error) > (float)(5.0 / 180.0 * PI) && fabs_imu_w < 0.05f)
 					{
 						imu.Set_Yaw(radar_yaw);
 					}

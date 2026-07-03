@@ -367,6 +367,7 @@ void Plan_Task(void *argument)
 	get_weapon_head.Set_Side(data::Side::Is_Blue_Left_Side());
 	get_weapon_head.Set_Pick_Num(data::PickWeaponNum::Get_Pick_Num()); /*夹第4个武器（靠内小）*/
 	
+	get_weapon_head.Set_Mode(0);
 	
 	// 初始化全局起点
 	if (data::BootArea::Is_Boot_At_Mc() == 1)
@@ -405,10 +406,15 @@ void Plan_Task(void *argument)
 		{
 			if (!data::HaveWeapon::Have_Weapon())
 			{
-				navigation.Go_To_Get_Weapon_Head();// 取武器头
+				navigation.Go_To_Get_Weapon_Head(1);// 取武器头
 			}
 			
 			navigation.Go_To_Stick_Edge();// 贴边对接
+			
+			navigation.Go_To_Get_Weapon_Head(2);// 取武器头
+			navigation.Go_To_Dock();
+			navigation.Go_To_Get_Weapon_Head(3);// 取武器头
+			navigation.Go_To_Dock();
 		}
 		
 
