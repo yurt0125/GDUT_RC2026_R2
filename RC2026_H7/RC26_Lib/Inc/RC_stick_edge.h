@@ -13,6 +13,8 @@
 enum StickDockState : uint8_t 
 {
 	STICK_DOCK_RESET = 0,
+	
+	
 	STICK_DOCK_DIS_PATH,
 	STICK_DOCK_TAKE_CTRL,
 	STICK_DOCK_GET_TIME,
@@ -20,6 +22,11 @@ enum StickDockState : uint8_t
 	STICK_DOCK_STOP,
 	STICK_DOCK_WAIT,
 	STICK_DOCK_FINISH,
+	
+	DOCK_SET_POS,
+	DOCK_OPEN,
+	DOCK_WAIT,
+	
 };
 
 
@@ -49,8 +56,9 @@ public:
 				}
 				else if (stick_l_event_2.Is_Trig())
 				{
-					y_pos = -0.106;
-					state = STICK_DOCK_TAKE_CTRL;
+					state = DOCK_SET_POS;
+					//y_pos = -0.106;
+					//state = STICK_DOCK_TAKE_CTRL;
 				}
 				break;
 			}
@@ -74,8 +82,6 @@ public:
 					delta -= TWO_PI;
 				else if (delta < -PI)
 					delta += TWO_PI;
-				
-				
 				
 				if (
 					user.Take_Control() &&
@@ -190,6 +196,52 @@ public:
 				state = STICK_DOCK_RESET;
 				break;
 			}
+			
+			/*-----------------------------------------------*/
+			
+			
+			
+			case DOCK_SET_POS:
+			{
+				user.Set_X(0.0);
+				user.Set_Y(0);
+				user.Set_Z(0.06);
+				user.Set_P_Max_T(3);
+				user.Set_P(0.2);
+				
+				if (ir_cmd.Get_Cmd())
+				{
+					state = DOCK_OPEN;
+					last_time = timer::Timer::Get_TimeStamp();
+				}
+				break;
+			}
+			case DOCK_OPEN:
+			{
+				user.Set_P(0.5);
+					
+				user.Set_Z(0);
+				
+				gripper.Open();
+				
+				if (timer::Timer::Get_DeltaTime(last_time) > 6000000)
+				{
+					state = DOCK_WAIT;
+				}
+				break;
+			}
+				
+			case DOCK_WAIT:
+			{
+				user.Set_P_Max_T(27);
+				user.Set_Reset_Pos();
+				user.Give_Control();
+				stick_l_event.Finish();
+				
+				state = STICK_DOCK_RESET;
+				break;
+			}
+					
 			
 			
 			default:

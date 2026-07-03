@@ -1,3 +1,4 @@
+// 红123 蓝456
 #pragma once
 #include <stdint.h>
 #include "RC_event3.h"
@@ -20,6 +21,11 @@ namespace gantry
     class GetWeaponHead
     {
     public:
+
+        enum class Computer_Mode : uint8_t {
+            Challenge = 0,
+            Main = 1
+        };
 
         enum class Computer_Side : uint8_t {
             BLUE_SIDE = 1,
@@ -74,10 +80,12 @@ namespace gantry
         Gripper& gripper_, 
         path::PathPlan3& path_plan_,
 	    path::HeadCtrl& head_ctrl_,
-        Computer_Side computer_side_ = Computer_Side::BLUE_SIDE
+        Computer_Side computer_side_ = Computer_Side::BLUE_SIDE,
+        Computer_Mode computer_mode_ = Computer_Mode::Challenge
     );        
         ~GetWeaponHead() = default;
         void Set_Side(bool side);
+        void Set_Mode(bool mode);
         void Set_Pick_Num(int num) { pick_num = num; }
         void Auto_Get_Weapon_Head();
         
@@ -100,13 +108,13 @@ namespace gantry
         void UpdateSideParam();
         void Set_Ctrl_Mode(SpeedMode mode_);
 
-
         data::RobotPose& pose;
         chassis::Chassis& omni4chassis;
         GantryUser user;
         Gripper& gripper; 
         mini_laser::MiniLaser& laser;
         path::Event3 weapon_event;
+
         path::PathPlan3& path_plan;
 		path::HeadCtrl& head_ctrl;
         pid::NonlinearPid chassis_npid_;
@@ -141,6 +149,7 @@ namespace gantry
 
         int pick_num;
         Computer_Side computer_side; // 蓝区/红区标志
+        Computer_Mode computer_mode;
 
         // 龙门架三轴位置
         static constexpr float GET_Z = (0.317129f - 0.028f + 0.05f); // 取武器头z轴位置

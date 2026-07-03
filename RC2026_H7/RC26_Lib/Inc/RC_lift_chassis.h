@@ -70,7 +70,7 @@ namespace chassis
 	{
 		GPIO_PIN_2,
 		GPIO_PIN_14,
-		GPIO_PIN_12,
+		GPIO_PIN_10,
 		GPIO_PIN_1,
 		GPIO_PIN_15,
 		GPIO_PIN_9

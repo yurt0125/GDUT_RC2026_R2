@@ -10,7 +10,8 @@ GetWeaponHead::GetWeaponHead(
     Gripper& gripper_, 
     path::PathPlan3& path_plan_,
     path::HeadCtrl& head_ctrl_,
-    Computer_Side computer_side_
+    Computer_Side computer_side_,
+    Computer_Mode computer_mode_
     ):
     weapon_event(20, 0.8f, true, false),
     path_plan(path_plan_), 
@@ -21,6 +22,7 @@ GetWeaponHead::GetWeaponHead(
     laser(laser_),
     gripper(gripper_),
     computer_side(computer_side_),
+    computer_mode(computer_mode_),
     chassis_npid_(
         1.9f,// kp
         0.0f,// kd
@@ -250,10 +252,27 @@ void GetWeaponHead::Pick(uint8_t num) {
 }
 
 void GetWeaponHead::Pick_Next() {
-    pick_num++;
-    if(pick_num > WEAPON_NUM) {
-        pick_num = 1;
-    }      
+
+    if(computer_mode == Computer_Mode::Challenge){
+        if(computer_side == Computer_Side::RED_SIDE){//123
+            pick_num++;
+            if(pick_num == 4){
+                pick_num = 1;
+            }
+        }
+        else{//456
+            pick_num++;
+            if(pick_num == 6){
+                pick_num = 4;
+            }
+        }
+    }
+    else{
+        pick_num++;
+        if(pick_num > WEAPON_NUM) {
+            pick_num = 1;
+        }      
+    }
     Pick(pick_num);
     gantry_state = GANTRY_STATE::Gantry_Down_Z;
 }
@@ -340,6 +359,18 @@ void GetWeaponHead::Set_Side(bool side) {
 	else
 	{
 		this->computer_side = Computer_Side::RED_SIDE; 
+	}
+    UpdateSideParam(); 
+}
+
+void GetWeaponHead::Set_Mode(bool mode) { //0为挑战赛 1为正赛
+	if(mode == true)
+	{
+		this->computer_mode = Computer_Mode::Main; 
+	}
+	else
+	{
+		this->computer_mode = Computer_Mode::Challenge; 
 	}
     UpdateSideParam(); 
 }

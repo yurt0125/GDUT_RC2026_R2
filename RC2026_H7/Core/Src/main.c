@@ -22,6 +22,7 @@
 #include "cordic.h"
 #include "dma.h"
 #include "fdcan.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "usb_device.h"
@@ -120,7 +121,7 @@ int main(void)
   MX_UART8_Init();
   MX_USART6_UART_Init();
   MX_USART2_UART_Init();
-  MX_UART4_Init();
+  MX_SPI3_Init();
   /* USER CODE BEGIN 2 */
 	All_Init();
   /* USER CODE END 2 */
