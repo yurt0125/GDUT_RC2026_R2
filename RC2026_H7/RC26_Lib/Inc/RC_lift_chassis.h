@@ -29,7 +29,7 @@ namespace chassis
     constexpr float RESET_POS   = 53.f;
 	
 	constexpr float DELTA_H 	= 4.f;
-	constexpr float DELTA_H_BIG	= 6.f;
+	constexpr float DELTA_H_BIG	= 10.f;
 	
 	
 	

@@ -27,6 +27,7 @@ namespace combine
 			{
 				chassis.Chassis_Disable();
 				is_combine = true;
+				uncombine_flag = false;
 			}
 			else
 			{

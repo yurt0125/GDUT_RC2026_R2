@@ -60,7 +60,7 @@ namespace combine
 	
 		uint32_t last_time;
 	
-		const float target_y = -0.2f;
+		const float target_y = -1.0f;
 	
 		bool is_combine;
     };

@@ -379,7 +379,26 @@ namespace path
 	}
 	
 	
-	
+	bool Navigation::Challenge_Go_To_Avoid_R1_In_ARENA()
+	{
+		float yaw;
+		vector2d::Vector2D p;
+		
+		if (data::Side::Is_Blue_Left_Side())
+		{
+			yaw = -HALF_PI;
+			p = vector2d::Vector2D(11.1, -3.73);
+		}
+		else
+		{
+			yaw = HALF_PI;
+			p = vector2d::Vector2D(11.1, 3.73);
+		}
+		
+		return Go_To_Do(p, yaw, EVENT3_NULL);
+	}
+		
+		
 	
 	
 	

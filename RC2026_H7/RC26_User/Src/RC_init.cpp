@@ -227,7 +227,14 @@ IR::IRCmd combine_ready_cmd(2);
 IR::IRCmd combine_cmd(3);
 IR::IRCmd put_3L_cmd(4);
 IR::IRCmd uncombine_cmd(8);
- 
+
+IR::IRCmd put_2L_1(6);
+IR::IRCmd put_2L_2(7);
+IR::IRCmd put_2L_3(5);
+
+
+
+
 /*==================Main_Task==================*/
 // 方波发生
 //SquareWave wave(1000, 3000);// 用于调pid
@@ -433,6 +440,7 @@ void Plan_Task(void *argument)
 		navigation.Pass_Do(vector2d::Vector2D(11, -2.5), 0, EVENT3_NULL);
 		navigation.Challenge_Go_To_Get_KFS_Ground(3);
 		
+		navigation.Challenge_Go_To_Avoid_R1_In_ARENA();
 		
 		//navigation.Challenge_Go_To_Get_KFS_Ground(2);
 		//navigation.Challenge_Go_To_Get_KFS_Ground(1);
@@ -551,6 +559,22 @@ void Plan_Task(void *argument)
 						
 						state = STATE_COMBINE;
 					}
+					else if (put_2L_1.Get_Cmd())
+					{
+						navigation.Pass_Do(vector2d::Vector2D(11.1, -5.13), -HALF_PI, EVENT3_NULL);
+						navigation.Go_To_Put_KFS_2L(1);
+					}
+					else if (put_2L_2.Get_Cmd())
+					{
+						navigation.Pass_Do(vector2d::Vector2D(11.1, -5.13), -HALF_PI, EVENT3_NULL);
+						navigation.Go_To_Put_KFS_2L(2);
+					}
+					else if (put_2L_3.Get_Cmd())
+					{
+						navigation.Pass_Do(vector2d::Vector2D(11.1, -5.13), -HALF_PI, EVENT3_NULL);
+						navigation.Go_To_Put_KFS_2L(3);
+					}
+						
 					break;
 				}
 				
