@@ -48,6 +48,13 @@ namespace gantry
 
         };
 
+        enum class CHASSIS_YAW : uint8_t {
+            Yaw_Idle,    // 等待触发
+            Yaw_Align,  // 调整底盘位置，到达死区即停(x轴在范围内即可)
+            Yaw_Ready,  
+
+        };
+
         enum class GANTRY_STATE : uint8_t {
             Gantry_Idle,           // 等待触发
             Gantry_Ready_Z_Pitch,  // z_pitch写死，y根据底盘位置调整，只要z到达预设高度，x可以提前伸出到Gantry_Ready_X
@@ -145,6 +152,7 @@ namespace gantry
 
 		float curr_x;
 		float curr_y;
+		float curr_yaw;
 
         uint32_t grab_start_time;
 
@@ -159,8 +167,8 @@ namespace gantry
 
         static constexpr float GANTRY_RETRACT_X = 0.03f;//龙门架复位后X轴位置
 
-        static constexpr float READY_GANTRY_DIST = 0.19f;
-        static constexpr float READY_CHASSIS_DIST = 0.26f;
+        static constexpr float READY_GANTRY_DIST = 0.17f;
+        static constexpr float READY_CHASSIS_DIST = 0.24f;
 
         // 停止阈值
         static constexpr float GANTRY_POS_TOLERANCE = 0.01f;
@@ -178,6 +186,13 @@ namespace gantry
         // 雷达偏移
         static constexpr float RADAR_ERROR_X = 0.0f;
         static constexpr float RADAR_ERROR_Y = 0.0f;
+
+
+
+
+    int m_yaw_stage = 0;
+    float m_final_target_yaw = 0.0f;
+    const float ANGLE_ERR = 0.02f;
 
     };
 }

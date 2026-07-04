@@ -176,6 +176,30 @@ namespace path
 	
 	
 	
+	bool Navigation::Go_To_Dock_2()
+	{
+		float yaw;
+		vector2d::Vector2D p;
+		
+		if (data::Side::Is_Blue_Left_Side())
+		{
+			yaw = HALF_PI;
+			p = vector2d::Vector2D(0.7, -5.2);
+		}
+		else
+		{
+			yaw = -HALF_PI;
+			p = vector2d::Vector2D(0.7, 5.2);
+		}
+		
+		return Go_To_Do(p, yaw, EVENT_STICK_L_EDGE_2);
+	}
+	
+	
+	
+	
+	
+	
 	bool Navigation::Go_To_Combine_Ready()
 	{
 		float yaw;

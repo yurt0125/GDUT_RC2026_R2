@@ -59,6 +59,7 @@ namespace path
 		bool Go_To_Put_KFS_2L(uint8_t col); /*放二层， 1 ~ 3 列，靠近梅林大*/
 		bool Go_To_Get_Weapon_Head(uint8_t n);
 		bool Go_To_Dock();
+		bool Go_To_Dock_2();
 		bool Go_To_Combine();
 		bool Go_To_Combine_Ready();
 		//bool Uncombine(vector2d::Vector2D p, float yaw);

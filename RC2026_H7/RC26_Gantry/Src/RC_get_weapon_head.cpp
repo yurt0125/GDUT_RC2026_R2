@@ -77,6 +77,7 @@ void GetWeaponHead::Auto_Get_Weapon_Head() {
     // 更新curr_x和curr_y
     curr_x = pose.X() + RADAR_ERROR_X;
     curr_y = pose.Y() + RADAR_ERROR_Y;
+    curr_yaw = pose.Yaw();
 
     switch (chassis_state)
     {
@@ -279,7 +280,7 @@ void GetWeaponHead::Pick_Next() {
         }
         else{//456
             pick_num++;
-            if(pick_num == 6){
+            if(pick_num > 6){
                 pick_num = 4;
             }
         }
@@ -320,8 +321,92 @@ bool GetWeaponHead::MoveChassis(float world_x, float world_y, float deadzone) {
 
 
 void GetWeaponHead::Set_Yaw(float yaw) {
+    if(computer_side == Computer_Side::BLUE_SIDE) {
+        if(curr_yaw < PI * 0.6f && curr_yaw > PI * 0.4f && 
+           yaw > PI * (-0.6f) && yaw < PI * (-0.4f) ) {
+
+        } 
+    }
+    else {
+    }
     head_ctrl.Set_Yaw(yaw);
 }
+
+
+#define ANGLE_ERR 0.02f  // 判定到达目标的角度误差阈值
+
+// void GetWeaponHead::Set_Yaw(float yaw)
+// {
+
+//     bool need_round = false;
+//     if (computer_side == Computer_Side::BLUE_SIDE)
+//     {
+//         // 蓝方：当前0.4π~0.6π，目标-0.6π~-0.4π 需要绕0
+//         bool curr_in_block = (curr_yaw < PI * 0.6f) && (curr_yaw > PI * 0.4f);
+//         bool tar_in_block = (yaw > -PI * 0.6f) && (yaw < -PI * 0.4f);
+//         need_round = curr_in_block && tar_in_block;
+//     }
+//     else if (computer_side == Computer_Side::RED_SIDE)
+//     {
+//         // 红方：当前-0.6π~-0.4π，目标0.4π~0.6π 需要绕0
+//         bool curr_in_block = (curr_yaw > -PI * 0.6f) && (curr_yaw < -PI * 0.4f);
+//         bool tar_in_block = (yaw < PI * 0.6f) && (yaw > PI * 0.4f);
+//         need_round = curr_in_block && tar_in_block;
+//     }
+
+//     // 不需要绕行：重置阶段，直接最小角度转到目标
+//     if (!need_round)
+//     {
+//         m_yaw_stage = 0;
+//         float diff = fmodf(yaw - curr_yaw, 2 * PI);
+//         if (diff > PI) diff -= 2 * PI;
+//         if (diff < -PI) diff += 2 * PI;
+//         head_ctrl.Set_Yaw(curr_yaw + diff);
+//         return;
+//     }
+
+//     // 需要绕行逻辑
+//     if (m_yaw_stage == 0)
+//     {
+//         m_final_target_yaw = yaw;
+//         m_yaw_stage = 1; // 阶段1：先往0度走
+//     }
+
+//     if (m_yaw_stage == 1)
+//     {
+//         // 最小角度向0靠拢
+//         float diff0 = fmodf(0.f - curr_yaw, 2 * PI);
+//         if (diff0 > PI) diff0 -= 2 * PI;
+//         if (diff0 < -PI) diff0 += 2 * PI;
+//         float aim = curr_yaw + diff0;
+//         head_ctrl.Set_Yaw(aim);
+
+//         // 走到0度，切换阶段2
+//         if (fabsf(diff0) < ANGLE_ERR)
+//         {
+//             m_yaw_stage = 2;
+//         }
+//     }
+//     else if (m_yaw_stage == 2)
+//     {
+//         // 最小角度从0走向最终目标
+//         float diffTar = fmodf(m_final_target_yaw - curr_yaw, 2 * PI);
+//         if (diffTar > PI) diffTar -= 2 * PI;
+//         if (diffTar < -PI) diffTar += 2 * PI;
+//         float aim = curr_yaw + diffTar;
+//         head_ctrl.Set_Yaw(aim);
+
+//         // 到达最终目标，重置状态
+//         if (fabsf(diffTar) < ANGLE_ERR)
+//         {
+//             m_yaw_stage = 0;
+//         }
+//     }
+// }
+
+
+
+
 
 void GetWeaponHead::Cal_Current_Pos() {
 }

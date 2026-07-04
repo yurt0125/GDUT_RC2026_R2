@@ -414,7 +414,8 @@ void Plan_Task(void *argument)
 			navigation.Go_To_Get_Weapon_Head(2);// 取武器头
 			navigation.Go_To_Dock();
 			navigation.Go_To_Get_Weapon_Head(3);// 取武器头
-			navigation.Go_To_Dock();
+			navigation.Go_To_Dock_2();
+			
 		}
 		
 

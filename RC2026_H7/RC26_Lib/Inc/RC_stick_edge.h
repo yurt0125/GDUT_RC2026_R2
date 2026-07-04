@@ -30,6 +30,8 @@ enum StickDockState : uint8_t
 };
 
 
+//volatile uint8_t count_ = 0;
+
 
 class StickEdge
 {
@@ -45,6 +47,14 @@ public:
 
 	void Stick_Edge()
 	{
+		if (ir_cmd.Get_Cmd())
+		{
+		
+			count_++;
+		}
+		
+		
+		
 		switch (state)
 		{
 			case STICK_DOCK_RESET:
@@ -206,7 +216,7 @@ public:
 				if (user.Take_Control())
 				{
 					user.Set_X(0.0);
-					user.Set_Y(0);
+					user.Set_Y(-0.05);
 					user.Set_Z(0.06);
 					user.Set_P_Max_T(3);
 					user.Set_P(0.2);
@@ -268,6 +278,8 @@ private:
 	gantry::Gripper& gripper;
 	data::RobotPose& pose;
 	gantry::GantryUser user;
+
+	uint8_t count_ = 0;
 
 	IR::IRCmd ir_cmd;
 };
