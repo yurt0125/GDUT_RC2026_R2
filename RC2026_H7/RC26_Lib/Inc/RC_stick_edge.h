@@ -20,12 +20,15 @@ enum StickDockState : uint8_t
 	STICK_DOCK_GET_TIME,
 	STICK_DOCK_STICK,
 	STICK_DOCK_STOP,
+	STICK_DOCK_WAIT_GO_CMD,
 	STICK_DOCK_WAIT,
 	STICK_DOCK_FINISH,
 	
 	DOCK_SET_POS,
 	DOCK_OPEN,
+	DOCK_WAIT_GO_CMD,
 	DOCK_WAIT,
+	DOCK_FINISH,
 	
 };
 
@@ -47,12 +50,12 @@ public:
 
 	void Stick_Edge()
 	{
-		if (ir_cmd.Get_Cmd())
-		{
-		
-			count_++;
-		}
-		
+//		if (open_cmd.Get_Cmd())
+//		{
+//		
+//			count_++;
+//		}
+//		
 		
 		
 		switch (state)
@@ -61,15 +64,13 @@ public:
 			{
 				if (stick_l_event.Is_Trig())
 				{
-					y_pos = 0.09;
 					state = STICK_DOCK_TAKE_CTRL;
 				}
 				else if (stick_l_event_2.Is_Trig())
 				{
 					state = DOCK_SET_POS;
-					//y_pos = -0.106;
-					//state = STICK_DOCK_TAKE_CTRL;
 				}
+				
 				break;
 			}
 			
@@ -166,33 +167,44 @@ public:
 				{
 					c.Set_Robot_Lin_Vel(vector2d::Vector2D(0, -0.2));
 				}
+				
 				c.Set_Ang_Vel(0);
 				
-				if (ir_cmd.Get_Cmd())
+				if (open_cmd.Get_Cmd())
 				{
-					//user.Set_P_Max_T(27);
 					user.Set_P(0.5);
 					
 					user.Set_Z(0);
 					
 					gripper.Open();
+					
+					state = STICK_DOCK_WAIT_GO_CMD;
+					
+				}
+				break;
+			}
+			
+			
+			case STICK_DOCK_WAIT_GO_CMD:
+			{
+				if (go_cmd.Get_Cmd())
+				{
 					state = STICK_DOCK_WAIT;
 					last_time = timer::Timer::Get_TimeStamp();
 				}
+				
 				break;
 			}
 			
 			
 			case STICK_DOCK_WAIT:
 			{
-				if (timer::Timer::Get_DeltaTime(last_time) > 6000000)
+				if (timer::Timer::Get_DeltaTime(last_time) > 2000000)
 				{
 					state = STICK_DOCK_FINISH;
 				}
 				break;
 			}
-			
-			
 			
 			case STICK_DOCK_FINISH:
 			{
@@ -209,8 +221,6 @@ public:
 			
 			/*-----------------------------------------------*/
 			
-			
-			
 			case DOCK_SET_POS:
 			{
 				if (user.Take_Control())
@@ -221,14 +231,15 @@ public:
 					user.Set_P_Max_T(3);
 					user.Set_P(0.2);
 					
-					if (ir_cmd.Get_Cmd())
+					if (open_cmd.Get_Cmd())
 					{
 						state = DOCK_OPEN;
-						last_time = timer::Timer::Get_TimeStamp();
 					}
 				}
 				break;
 			}
+			
+			
 			case DOCK_OPEN:
 			{
 				user.Set_P(0.5);
@@ -237,14 +248,31 @@ public:
 				
 				gripper.Open();
 				
-				if (timer::Timer::Get_DeltaTime(last_time) > 6000000)
+				state = DOCK_WAIT_GO_CMD;
+				break;
+			}
+			
+			case DOCK_WAIT_GO_CMD:
+			{
+				if (go_cmd.Get_Cmd())
 				{
+					last_time = timer::Timer::Get_TimeStamp();
 					state = DOCK_WAIT;
 				}
 				break;
 			}
-				
+			
 			case DOCK_WAIT:
+			{
+				if (timer::Timer::Get_DeltaTime(last_time) > 2000000)
+				{
+					state = DOCK_FINISH;
+				}
+				
+				break;
+			}
+			
+			case DOCK_FINISH:
 			{
 				user.Set_P_Max_T(27);
 				user.Set_Reset_Pos();
@@ -270,7 +298,7 @@ public:
 private:
 	path::Event3 stick_l_event;
 	path::Event3 stick_l_event_2;
-	float y_pos = 0;
+	//float y_pos = 0;
 	StickDockState state;
 	chassis::Omni4Chassis& c;
 	path::PathPlan3& p;
@@ -281,6 +309,7 @@ private:
 
 	uint8_t count_ = 0;
 
-	IR::IRCmd ir_cmd;
+	IR::IRCmd open_cmd;
+	IR::IRCmd go_cmd;
 };
 #endif

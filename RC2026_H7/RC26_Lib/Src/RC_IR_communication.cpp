@@ -52,6 +52,7 @@ namespace IR
 				{
 					if (IRCmd::cmd_list[cmd - 1] != nullptr)
 					{
+						IRCmd::cmd_list[cmd - 1]->time_stamp = timer::Timer::Get_TimeStamp();
 						IRCmd::cmd_list[cmd - 1]->new_cmd = true;
 					}
 				}
@@ -79,6 +80,7 @@ namespace IR
 		}
 		
 		new_cmd = false;
+		time_stamp = 0;
 	}
 	
 	

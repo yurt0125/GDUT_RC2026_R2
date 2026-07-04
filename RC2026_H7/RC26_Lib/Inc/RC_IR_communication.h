@@ -3,6 +3,7 @@
 #ifdef __cplusplus
 #include "RC_serial.h"
 #include <string.h>
+#include "RC_timer.h"
 
 constexpr uint8_t IR_COM_RX_BUFFER_SIZE = 32;
 
@@ -24,6 +25,15 @@ namespace IR
 			{
 				new_cmd = false;
 				return true;
+				
+//				if (timer::Timer::Get_DeltaTime(time_stamp) < 100000) // 100ms
+//				{
+//					return true;
+//				}
+//				else
+//				{
+//					return false;
+//				}
 			}
 			else
 			{
@@ -36,7 +46,8 @@ namespace IR
     private:
 		static IRCmd* cmd_list[IR_MAX_CMD];
 		volatile bool new_cmd;
-	
+		volatile uint32_t time_stamp;
+		
 		friend class IRCom;
     };
 	

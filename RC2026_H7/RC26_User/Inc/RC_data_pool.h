@@ -164,6 +164,8 @@ namespace data
 	
 	
 	
+	
+	
 	/*==============是否有体外方块=====================*/
 	class HaveOutKFS
     {
@@ -218,6 +220,36 @@ namespace data
 	
 	
 	
+	// 0 : 正赛
+	// 1 : 一二区挑战赛
+	// 2 : 三区挑战赛
+	/*==============比赛类型=====================*/
+	class MatchType
+    {
+    public:
+		MatchType() = delete;
+		~MatchType() = delete;
+    
+		// 初始化KFS数量
+		static void Init_Match_Type(uint8_t match_type_)
+		{
+			if (!is_init)
+			{
+				match_type = match_type_;
+				is_init = true;
+			}
+		}
+		
+		static bool Is_Match_Type_Init() { return is_init; }
+		static uint8_t Get_Match_Type() { return match_type; }
+
+    private:
+		static inline uint8_t match_type = 0;
+		static inline bool is_init = false;
+	
+		friend class AllData;
+    };
+	/*==============比赛类型=====================*/
 	
 	
 	

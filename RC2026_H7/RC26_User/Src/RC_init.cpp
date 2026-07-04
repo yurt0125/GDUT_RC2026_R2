@@ -358,26 +358,49 @@ enum AutoState : uint8_t
 };
 
 
-AutoState state = STATE_PUT_2L;
+AutoState state = STATE_PUT_2L; // 状态机
 
 
 void Plan_Task(void *argument)
 {
 	while (!data::AllData::Is_All_Init())
 	{
-		osDelay(10);
+		osDelay(10); // 等待上位机发送
 	}
 	
 	osDelay(200);
-	ir_com.Clear_All_Cmd();
+	ir_com.Clear_All_Cmd(); // 清除所有红外
+	
+	/*------------------------------设置----------------------------------*/
 	
 	get_weapon_head.Set_Side(data::Side::Is_Blue_Left_Side());
 	get_weapon_head.Set_Pick_Num(data::PickWeaponNum::Get_Pick_Num()); /*夹第4个武器（靠内小）*/
 	
-	get_weapon_head.Set_Mode(0);
+	if (data::MatchType::Get_Match_Type() == 1)
+	{
+		get_weapon_head.Set_Mode(0);
+	}
+	else
+	{
+		get_weapon_head.Set_Mode(1);
+	}
 	
-	// 初始化全局起点
-	if (data::BootArea::Is_Boot_At_Mc() == 1)
+	
+	if (( data::HaveOutKFS::Have_Out_KFS() && data::KFSNum::Get_KFS_Num() != 0 ) || (data::KFSNum::Get_KFS_Num() == 4))
+	{
+		gan.Have_Out_KFS_Pos();
+		suck.On();
+	}
+	
+	if (data::KFSNum::Get_KFS_Num() == 0)
+	{
+		data::HaveOutKFS::Set_Have_Out_KFS(false);
+	}
+	
+	
+	/*-----------------------------初始化全局起点-----------------------------------*/
+	
+	if (data::BootArea::Is_Boot_At_Mc() == 1) // 一区启动区
 	{
 		// 默认启动区
 		if (data::Side::Is_Blue_Left_Side())
@@ -389,7 +412,7 @@ void Plan_Task(void *argument)
 			navigation.Add_Start(vector2d::Vector2D(0.42, 4.53), 0);// 红
 		}
 	}
-	else if (data::BootArea::Is_Boot_At_Mc() == 0)
+	else if (data::BootArea::Is_Boot_At_Mc() == 0) // 斜坡启动区
 	{
 		state = STATE_COMBINE_READY;
 		
@@ -403,10 +426,37 @@ void Plan_Task(void *argument)
 			navigation.Add_Start(vector2d::Vector2D(7.61, 0.7), HALF_PI);// 红
 		}
 	}
+	else if (data::BootArea::Is_Boot_At_Mc() == 2) // 三区启动区
+	{
+		
+	}
 	
+	/*----------------------------硬编码路径------------------------------------*/
 	
-	
-	if (data::BootArea::Is_Boot_At_Mc() == 1)
+	if (data::MatchType::Get_Match_Type() == 0) // 正赛
+	{
+		// 规划夹武器和对接
+		if (data::IsDock::Is_Dock())
+		{
+			if (!data::HaveWeapon::Have_Weapon())
+			{
+				navigation.Go_To_Get_Weapon_Head(1);// 取武器头
+			}
+			
+			navigation.Go_To_Stick_Edge();// 贴边对接
+		}
+		
+		// 规划梅林
+		if (data::BootArea::Is_Boot_At_Mc())
+		{
+			best_path.Generate_Path();
+		}
+
+		// 放中间
+		navigation.Go_To_Put_KFS_2L(2);
+		
+	}
+	else if (data::MatchType::Get_Match_Type() == 1) // 一二区挑战赛
 	{
 		// 规划夹武器和对接
 		if (data::IsDock::Is_Dock())
@@ -422,10 +472,8 @@ void Plan_Task(void *argument)
 			navigation.Go_To_Dock();
 			navigation.Go_To_Get_Weapon_Head(3);// 取武器头
 			navigation.Go_To_Dock_2();
-			
 		}
 		
-
 		// 规划梅林
 		if (data::BootArea::Is_Boot_At_Mc())
 		{
@@ -435,7 +483,7 @@ void Plan_Task(void *argument)
 		// 放中间
 		navigation.Go_To_Put_KFS_2L(2);
 	}
-	else if (data::BootArea::Is_Boot_At_Mc() == 0)
+	else if (data::MatchType::Get_Match_Type() == 2) // 三区挑战赛
 	{
 		navigation.Pass_Do(vector2d::Vector2D(11, -2.5), 0, EVENT3_NULL);
 		navigation.Challenge_Go_To_Get_KFS_Ground(3);
@@ -445,7 +493,7 @@ void Plan_Task(void *argument)
 		//navigation.Challenge_Go_To_Get_KFS_Ground(2);
 		//navigation.Challenge_Go_To_Get_KFS_Ground(1);
 	}
-	
+	/*------------------------------循环----------------------------------*/
 
 	uint16_t feedback_count = 0;
 	uint8_t feedback_data[10];
@@ -475,7 +523,9 @@ void Plan_Task(void *argument)
 			feedback_count = 0;
 		}
 		
-		if (data::BootArea::Is_Boot_At_Mc() == 1)
+		/*-----------------------------状态机-----------------------------------*/
+		
+		if (data::MatchType::Get_Match_Type() == 0)
 		{
 			switch (state)
 			{
@@ -543,10 +593,9 @@ void Plan_Task(void *argument)
 					state = STATE_END;
 					break;
 				}
-				
 			}
 		}
-		else if (data::BootArea::Is_Boot_At_Mc() == 0)
+		else if (data::MatchType::Get_Match_Type() == 2)
 		{
 			switch (state)
 			{
@@ -619,7 +668,6 @@ void Plan_Task(void *argument)
 				
 			}
 		}
-		
 		
 		osDelay(1);
 	}

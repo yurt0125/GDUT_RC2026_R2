@@ -13,7 +13,8 @@ StickEdge::StickEdge(
 	p(p_),
 	user(gan_),
 	gripper(gripper_),
-	ir_cmd(1),
+	open_cmd(1),
+	go_cmd(9),
 	pose(pose_)
 {
 	state = STICK_DOCK_RESET;

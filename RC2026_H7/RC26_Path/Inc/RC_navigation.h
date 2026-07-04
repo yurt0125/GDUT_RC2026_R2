@@ -7,7 +7,7 @@
 #ifdef __cplusplus
 namespace path
 {
-	constexpr uint8_t NAVIGATION_MAX_DESTINATION = 15;
+	constexpr uint8_t NAVIGATION_MAX_DESTINATION = 20;
 	
 	class Navigation : public task::ManagedTask
     {

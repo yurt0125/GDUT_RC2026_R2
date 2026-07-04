@@ -15,7 +15,7 @@ namespace ros
     private:
 		void CDC_Receive_Process(uint8_t *buf, uint16_t len) override
 		{
-			if (len == 6)
+			if (len == 8)
 			{
 				if (!data::AllData::Is_All_Init())
 				{
@@ -25,9 +25,13 @@ namespace ros
 					is_dock         = (bool)buf[3];
 					pick_weapon_num = buf[4];
 					boot_area       = buf[5];
+					match_type		= buf[6];
+					have_out_kfs	= (bool)buf[7];
 					
 					if (kfs_num > 4) kfs_num = 4;
 					if (pick_weapon_num > 6) pick_weapon_num = 6;
+					if (match_type > 2) match_type = 0;
+					
 					
 					data::Side::Init_Is_Blue_Left_Side(is_blue_side);
 					data::KFSNum::Init_KFS_Num(kfs_num);
@@ -35,6 +39,9 @@ namespace ros
 					data::IsDock::Init_Is_Dock(is_dock);
 					data::BootArea::Init_Is_Boot_At_Mc(boot_area);
 					data::PickWeaponNum::Init_Pick_Num(pick_weapon_num);
+					data::MatchType::Init_Match_Type(match_type);
+					data::HaveOutKFS::Set_Have_Out_KFS(have_out_kfs);
+					
 				}
 				
 				// 应答
@@ -49,6 +56,8 @@ namespace ros
 		bool 	is_dock;
 		uint8_t pick_weapon_num;
 		bool 	boot_area;
+		uint8_t match_type;
+		bool 	have_out_kfs;
     };
 }
 #endif

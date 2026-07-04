@@ -44,6 +44,14 @@ namespace gantry
 			Set_Reset_Pos();
 		}
 		
+		void Have_Out_KFS_Pos()
+		{
+			Set_X(0.04);
+			Set_Y(0);
+			Set_Z(0);
+			Set_P(0);
+		}
+		
 		void Gantry_Base();
 		
     private:
