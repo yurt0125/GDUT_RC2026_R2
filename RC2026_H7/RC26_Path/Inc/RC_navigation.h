@@ -86,7 +86,6 @@ namespace path
 		uint8_t Dst_FreeSpace() const { return (head - tail - 1 + NAVIGATION_MAX_DESTINATION) % NAVIGATION_MAX_DESTINATION; }
 		uint8_t Dst_Num() const { return (tail - head + NAVIGATION_MAX_DESTINATION) % NAVIGATION_MAX_DESTINATION; }
 	
-		
 	
 		void Task_Process() override;
 		
@@ -98,6 +97,8 @@ namespace path
 		
 		GraphPlan& plan;
 		NavPoint last_navp; /*储存上次终点作为下次起点*/
+		NavPoint just_nav;
+		
 	
 		bool is_start; /*是否添加全局起点*/
 		bool is_close; /*禁止添加目标点*/

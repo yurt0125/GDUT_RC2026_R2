@@ -232,7 +232,7 @@ IR::IRCmd put_2L_1(6);
 IR::IRCmd put_2L_2(7);
 IR::IRCmd put_2L_3(5);
 
-
+IR::IRCmd home(10);
 
 
 /*==================Main_Task==================*/
@@ -253,6 +253,18 @@ void Main_Task(void *argument)
 	
 	for (;;)
 	{
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		imu_fusion.Fusion();
 		float fusion_yaw = hwt101ct.Yaw();
 		robot_pose.Update_Orientation(&fusion_yaw, NULL, NULL);
@@ -450,8 +462,8 @@ void Plan_Task(void *argument)
 		}
 
 		// 放中间
-		navigation.Go_To_Put_KFS_2L(2);
-		
+		//navigation.Go_To_Put_KFS_2L(2);
+		navigation.Go_To_Avoid_R1_In_ARENA();
 	}
 	else if (data::MatchType::Get_Match_Type() == 1) // 一二区挑战赛
 	{
@@ -484,10 +496,9 @@ void Plan_Task(void *argument)
 	{
 		navigation.Pass_Do(vector2d::Vector2D(11, -2.5), 0, EVENT3_NULL);
 		navigation.Challenge_Go_To_Get_KFS_Ground(3);
-		
+		navigation.Challenge_Go_To_Get_KFS_Ground(2);
 		navigation.Challenge_Go_To_Avoid_R1_In_ARENA();
 		
-		//navigation.Challenge_Go_To_Get_KFS_Ground(2);
 		//navigation.Challenge_Go_To_Get_KFS_Ground(1);
 	}
 	/*------------------------------循环----------------------------------*/
@@ -522,78 +533,78 @@ void Plan_Task(void *argument)
 		
 		/*-----------------------------状态机-----------------------------------*/
 		
-		if (data::MatchType::Get_Match_Type() == 0) // 正赛
-		{
-			switch (state)
-			{
-				case STATE_PUT_2L:
-				{
-					// 放中间失败重试
-					if (putKFS.Put_First_Fail_Navi())
-					{
-						state = STATE_AVOID_R1;
-					}
-					break;
-				}
-				
-				case STATE_AVOID_R1:
-				{
-					// 避开r1
-					if (navigation.Go_To_Avoid_R1_In_ARENA())
-					{
-						state = STATE_COMBINE_READY;
-					}
-					break;
-				}
-				
-				case STATE_COMBINE_READY:
-				{
-					// 准备合体
-					if (combine_ready_cmd.Get_Cmd() && !com.Is_Combine())
-					{
-						navigation.Go_To_Combine_Ready();
-						
-						state = STATE_COMBINE;
-					}
-					break;
-				}
-				
-				
-				case STATE_COMBINE:
-				{
-					// 合体
-					if (combine_cmd.Get_Cmd() && !com.Is_Combine())
-					{
-						navigation.Go_To_Combine();
-						
-						state = STATE_PUT_3L;
-					}
-					break;
-				}
-				
-				
-				case STATE_PUT_3L:
-				{
-					// 放第三层命令
-					if (put_3L_cmd.Get_Cmd())
-					{
-						path::Event3::Trig_Event(EVENT_PUT_KFS_3L_READY | EVENT_PUT_KFS_PUT);
-						
-						state = STATE_END;
-					}
-					break;
-				}
-				
-				
-				default:
-				{
-					state = STATE_END;
-					break;
-				}
-			}
-		}
-		else if (data::MatchType::Get_Match_Type() == 2)  // 三区挑战赛
-		{
+//		if (data::MatchType::Get_Match_Type() == 0) // 正赛
+//		{
+//			switch (state)
+//			{
+//				case STATE_PUT_2L:
+//				{
+//					// 放中间失败重试
+//					if (putKFS.Put_First_Fail_Navi())
+//					{
+//						state = STATE_AVOID_R1;
+//					}
+//					break;
+//				}
+//				
+//				case STATE_AVOID_R1:
+//				{
+//					// 避开r1
+//					if (navigation.Go_To_Avoid_R1_In_ARENA())
+//					{
+//						state = STATE_COMBINE_READY;
+//					}
+//					break;
+//				}
+//				
+//				case STATE_COMBINE_READY:
+//				{
+//					// 准备合体
+//					if (combine_ready_cmd.Get_Cmd() && !com.Is_Combine())
+//					{
+//						navigation.Go_To_Combine_Ready();
+//						
+//						state = STATE_COMBINE;
+//					}
+//					break;
+//				}
+//				
+//				
+//				case STATE_COMBINE:
+//				{
+//					// 合体
+//					if (combine_cmd.Get_Cmd() && !com.Is_Combine())
+//					{
+//						navigation.Go_To_Combine();
+//						
+//						state = STATE_PUT_3L;
+//					}
+//					break;
+//				}
+//				
+//				
+//				case STATE_PUT_3L:
+//				{
+//					// 放第三层命令
+//					if (put_3L_cmd.Get_Cmd())
+//					{
+//						path::Event3::Trig_Event(EVENT_PUT_KFS_3L_READY | EVENT_PUT_KFS_PUT);
+//						
+//						state = STATE_END;
+//					}
+//					break;
+//				}
+//				
+//				
+//				default:
+//				{
+//					state = STATE_END;
+//					break;
+//				}
+//			}
+//		}
+//		else if (data::MatchType::Get_Match_Type() == 2)  // 三区挑战赛
+//		{
 			switch (state)
 			{
 				case STATE_COMBINE_READY:
@@ -617,7 +628,11 @@ void Plan_Task(void *argument)
 					{
 						navigation.Challenge_Go_To_Put_KFS_2L(3);
 					}
-						
+					else if (home.Get_Cmd())
+					{
+						navigation.Challenge_Go_To_Avoid_R1_In_ARENA();
+					}
+					
 					break;
 				}
 				
@@ -657,7 +672,7 @@ void Plan_Task(void *argument)
 					break;
 				}
 			}
-		}
+//		}
 		
 		osDelay(1);
 	}

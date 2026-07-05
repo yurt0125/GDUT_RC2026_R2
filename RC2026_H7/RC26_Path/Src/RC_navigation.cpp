@@ -19,6 +19,8 @@ namespace path
 		dst[tail].type = type_;
 		dst[tail].event = event_;
 		
+		just_nav = nav_;
+		
 		tail = (tail + 1) % NAVIGATION_MAX_DESTINATION;
 		return true;
 	}
@@ -308,12 +310,12 @@ namespace path
 		if (data::Side::Is_Blue_Left_Side())
 		{
 			yaw = -HALF_PI;
-			p = vector2d::Vector2D(10.3, -4);
+			p = vector2d::Vector2D(11.13, -3.7);
 		}
 		else
 		{
 			yaw = HALF_PI;
-			p = vector2d::Vector2D(10.3, 4);
+			p = vector2d::Vector2D(11.13, 3.7);
 		}
 		
 		return Go_To_Do(p, yaw, EVENT3_NULL);
@@ -384,26 +386,20 @@ namespace path
 		float yaw;
 		vector2d::Vector2D p;
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		if (just_nav.p.x() < 11)
+		{
+			Pass_Do(vector2d::Vector2D(11.13, just_nav.p.y()), -HALF_PI, EVENT3_NULL);
+		}
 		
 		if (data::Side::Is_Blue_Left_Side())
 		{
 			yaw = -HALF_PI;
-			p = vector2d::Vector2D(11.13, -3.73);
+			p = vector2d::Vector2D(11.13, -3.7);
 		}
 		else
 		{
 			yaw = HALF_PI;
-			p = vector2d::Vector2D(11.13, 3.73);
+			p = vector2d::Vector2D(11.13, 3.7);
 		}
 		
 		return Go_To_Do(p, yaw, EVENT3_NULL);
@@ -417,7 +413,7 @@ namespace path
 		vector2d::Vector2D p;
 		float yaw;
 		
-		if (last_navp.p.y() < -5)
+		if (just_nav.p.y() < -5)
 		{
 			// 直线到达
 		}
@@ -431,7 +427,7 @@ namespace path
 			else
 			{
 				// 先向前再向左
-				Pass_Do(vector2d::Vector2D(11.13, last_navp.p.y()), -HALF_PI, EVENT3_NULL);
+				Pass_Do(vector2d::Vector2D(11.13, just_nav.p.y()), -HALF_PI, EVENT3_NULL);
 				
 				Pass_Do(vector2d::Vector2D(11.13, -5.13), -HALF_PI, EVENT3_NULL);
 			}

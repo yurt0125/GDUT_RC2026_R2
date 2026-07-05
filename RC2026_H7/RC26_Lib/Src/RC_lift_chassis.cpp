@@ -61,8 +61,8 @@ namespace chassis
 
 	
 	
-	constexpr float LIFT_CHASSIS_UP_DIS = 0.35f * 0.707f;
-	constexpr float LIFT_CHASSIS_DOWN_DIS = 0.3f * 0.707f;
+	constexpr float LIFT_CHASSIS_UP_DIS = 0.35f;
+	constexpr float LIFT_CHASSIS_DOWN_DIS = 0.3f;
 
 	void LiftChassis::Lift(LiftAction a_, LiftHeigth h_, LiftDir d_, bool trig)
 	{
