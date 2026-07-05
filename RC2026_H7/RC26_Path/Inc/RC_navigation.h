@@ -58,20 +58,25 @@ namespace path
 		bool Go_To_Get_KFS(uint8_t kfs_node, Direction get_dir);
 		bool Go_To_Put_KFS_2L(uint8_t col); /*放二层， 1 ~ 3 列，靠近梅林大*/
 		bool Go_To_Get_Weapon_Head(uint8_t n);
+		
 		bool Go_To_Dock();
 		bool Go_To_Dock_2();
+		
 		bool Go_To_Combine();
 		bool Go_To_Combine_Ready();
-		//bool Uncombine(vector2d::Vector2D p, float yaw);
 		bool Go_To_Avoid_R1_In_ARENA();
 		
 		bool Go_To_Stick_Edge();
+		
+		
 		
 		
 		bool Challenge_Go_To_Avoid_R1_In_ARENA();
 		bool Challenge_Go_To_Get_KFS_Ground(uint8_t num);
 		bool Challenge_Go_To_Combine_Ready();
 		bool Challenge_Go_To_Combine();
+		bool Challenge_Go_To_Put_KFS_2L(uint8_t col); /*放二层， 1 ~ 3 列，靠近梅林小*/
+		
 		/*------------------------------------------------------------*/
 		
 		

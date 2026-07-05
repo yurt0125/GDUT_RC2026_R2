@@ -178,9 +178,10 @@ namespace path
 		static constexpr float FIELD_WIDTH = 6;
 		
 		static constexpr float SUDOKU_SIZE = 0.54;
-		static constexpr float SUDOKU_COL_1_X = FIELD_LENGTH - 0.44 - (SUDOKU_SIZE / 2.0);
-		static constexpr float SUDOKU_COL_2_X = SUDOKU_COL_1_X - SUDOKU_SIZE;
-		static constexpr float SUDOKU_COL_3_X = SUDOKU_COL_2_X - SUDOKU_SIZE;
+		
+		static constexpr float SUDOKU_COL_3_X = FIELD_LENGTH - 0.44 - (SUDOKU_SIZE / 2.0);
+		static constexpr float SUDOKU_COL_2_X = SUDOKU_COL_3_X - SUDOKU_SIZE;
+		static constexpr float SUDOKU_COL_1_X = SUDOKU_COL_2_X - SUDOKU_SIZE;
 	
 	
 		static constexpr int8_t height[GRAPH_NODE_NUM] = 

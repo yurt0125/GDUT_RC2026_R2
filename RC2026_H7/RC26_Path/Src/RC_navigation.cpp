@@ -384,22 +384,80 @@ namespace path
 		float yaw;
 		vector2d::Vector2D p;
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		if (data::Side::Is_Blue_Left_Side())
 		{
 			yaw = -HALF_PI;
-			p = vector2d::Vector2D(11.1, -3.73);
+			p = vector2d::Vector2D(11.13, -3.73);
 		}
 		else
 		{
 			yaw = HALF_PI;
-			p = vector2d::Vector2D(11.1, 3.73);
+			p = vector2d::Vector2D(11.13, 3.73);
 		}
 		
 		return Go_To_Do(p, yaw, EVENT3_NULL);
 	}
 		
 		
-	
+	bool Navigation::Challenge_Go_To_Put_KFS_2L(uint8_t col)
+	{
+		if (col < 1 || col > 3) return false;
+		
+		vector2d::Vector2D p;
+		float yaw;
+		
+		if (last_navp.p.y() < -5)
+		{
+			// 直线到达
+		}
+		else
+		{
+			if (last_navp.p.x() > 11)
+			{
+				// 先向左
+				Pass_Do(vector2d::Vector2D(11.13, -5.13), -HALF_PI, EVENT3_NULL);
+			}
+			else
+			{
+				// 先向前再向左
+				Pass_Do(vector2d::Vector2D(11.13, last_navp.p.y()), -HALF_PI, EVENT3_NULL);
+				
+				Pass_Do(vector2d::Vector2D(11.13, -5.13), -HALF_PI, EVENT3_NULL);
+			}
+		}
+		
+		if (col == 1)
+			p.x() = MapGraph::SUDOKU_COL_1_X;
+		else if (col == 2)
+			p.x() = MapGraph::SUDOKU_COL_2_X;
+		else
+			p.x() = MapGraph::SUDOKU_COL_3_X;
+		
+		
+		if (data::Side::Is_Blue_Left_Side())
+		{
+			p.y() = -(MapGraph::FIELD_WIDTH - PUT_KFS_DIS);
+			yaw = -HALF_PI;
+		}
+		else
+		{
+			p.y() = (MapGraph::FIELD_WIDTH - PUT_KFS_DIS);
+			yaw = HALF_PI;
+		}
+		
+		return Go_To_Do(p, yaw, EVENT_PUT_KFS_2L_READY | EVENT_PUT_KFS_PUT);
+	}
 	
 	
 	
@@ -414,9 +472,12 @@ namespace path
 		{
 			if (Dst_Num() != 0)
 			{
-				if (plan.Plan(last_navp, dst[head]))
+				if (last_navp.p != dst[head].nav.p)
 				{
-					last_navp = dst[head].nav;
+					if (plan.Plan(last_navp, dst[head]))
+					{
+						last_navp = dst[head].nav;
+					}
 				}
 				
 				Delete_Dst();

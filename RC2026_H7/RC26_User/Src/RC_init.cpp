@@ -241,9 +241,6 @@ IR::IRCmd put_2L_3(5);
 //float target = 0;
 //float a = 0;
 
-//bool auto_flag = 0;
-
-
 
 bool en_flag = false;
 bool dis_flag = false;
@@ -525,7 +522,7 @@ void Plan_Task(void *argument)
 		
 		/*-----------------------------状态机-----------------------------------*/
 		
-		if (data::MatchType::Get_Match_Type() == 0)
+		if (data::MatchType::Get_Match_Type() == 0) // 正赛
 		{
 			switch (state)
 			{
@@ -595,7 +592,7 @@ void Plan_Task(void *argument)
 				}
 			}
 		}
-		else if (data::MatchType::Get_Match_Type() == 2)
+		else if (data::MatchType::Get_Match_Type() == 2)  // 三区挑战赛
 		{
 			switch (state)
 			{
@@ -610,18 +607,15 @@ void Plan_Task(void *argument)
 					}
 					else if (put_2L_1.Get_Cmd())
 					{
-						navigation.Pass_Do(vector2d::Vector2D(11.1, -5.13), -HALF_PI, EVENT3_NULL);
-						navigation.Go_To_Put_KFS_2L(1);
+						navigation.Challenge_Go_To_Put_KFS_2L(1);
 					}
 					else if (put_2L_2.Get_Cmd())
 					{
-						navigation.Pass_Do(vector2d::Vector2D(11.1, -5.13), -HALF_PI, EVENT3_NULL);
-						navigation.Go_To_Put_KFS_2L(2);
+						navigation.Challenge_Go_To_Put_KFS_2L(2);
 					}
 					else if (put_2L_3.Get_Cmd())
 					{
-						navigation.Pass_Do(vector2d::Vector2D(11.1, -5.13), -HALF_PI, EVENT3_NULL);
-						navigation.Go_To_Put_KFS_2L(3);
+						navigation.Challenge_Go_To_Put_KFS_2L(3);
 					}
 						
 					break;
@@ -647,25 +641,21 @@ void Plan_Task(void *argument)
 					if (put_3L_cmd.Get_Cmd())
 					{
 						path::Event3::Trig_Event(EVENT_PUT_KFS_3L_READY | EVENT_PUT_KFS_PUT);
-						
-						//state = STATE_END;
 					}
 					else if (uncombine_cmd.Get_Cmd())
 					{
 						path::Event3::Trig_Event(EVENT_COMBINE);
 						
-						state = STATE_END;
+						state = STATE_COMBINE_READY;
 					}
 					break;
 				}
 				
-				
 				default:
 				{
-					state = STATE_END;
+					state = STATE_COMBINE_READY;
 					break;
 				}
-				
 			}
 		}
 		

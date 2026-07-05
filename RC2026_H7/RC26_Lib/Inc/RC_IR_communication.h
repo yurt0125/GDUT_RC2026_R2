@@ -24,16 +24,17 @@ namespace IR
 			if (new_cmd)
 			{
 				new_cmd = false;
-				return true;
 				
-//				if (timer::Timer::Get_DeltaTime(time_stamp) < 100000) // 100ms
-//				{
-//					return true;
-//				}
-//				else
-//				{
-//					return false;
-//				}
+//				return true;
+				
+				if (timer::Timer::Get_DeltaTime(time_stamp) < 200000) // 100ms
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
