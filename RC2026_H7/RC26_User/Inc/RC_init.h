@@ -34,6 +34,7 @@
 #include "RC_QEO_mini.h"
 #include "RC_fusion_ctrl.h"
 #include "RC_combine.h"
+#include "RC_ws2812.h"
 
 /* path */
 #include "RC_traj_plan3.h"

@@ -13,6 +13,7 @@ can::Can can3(hfdcan3);
 // 虚拟串口上位机通讯
 cdc::CDC CDC_HS(cdc::USB_CDC_HS);
 
+
 /*===================Motor=================*/
 // 底盘电机
 motor::M3508 m3508_1_can1(1, can1, &tim13_500hz);
@@ -46,6 +47,8 @@ motor::M2006 m2006_can3_8(8, can3, &tim13_500hz);// 前
 /*====================数据池====================*/
 // 机器人位姿
 data::RobotPose robot_pose;
+	
+ws2812::Ws2812B led(&hspi3);
 
 /*==================底盘=======================*/
 
@@ -251,15 +254,20 @@ void Main_Task(void *argument)
 	remote_ctrl.signal_swd();
 //	wave.Init();
 	
+	
+	
 	for (;;)
 	{
 		
 		
+		led.SetRed();
 		
 		
 		
-		
-		
+		if (remote_ctrl.signal_swd())
+		{
+			led.FlashOnce(ws2812::Color::GREEN, ws2812::Color::NONE);
+		}
 		
 		
 		

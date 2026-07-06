@@ -208,10 +208,11 @@ void Ws2812B::SpiSend()
     }
 
     // 刷新 DCache，确保 DMA 读到最新数据（STM32H7 必需）
-    SCB_CleanDCache_by_Addr((uint32_t*)spi_buf, WS2812B_AMOUNT * 24 + RESET_BYTES);
+    //SCB_CleanDCache_by_Addr((uint32_t*)spi_buf, WS2812B_AMOUNT * 24 + RESET_BYTES);
 
     // DMA 一次性发送 LED 数据 + 复位信号
-    HAL_SPI_Transmit_DMA(hspi, spi_buf, WS2812B_AMOUNT * 24 + RESET_BYTES);
+    //HAL_SPI_Transmit_DMA(hspi, spi_buf, WS2812B_AMOUNT * 24 + RESET_BYTES);
+	HAL_SPI_Transmit(hspi, spi_buf, WS2812B_AMOUNT * 24 + RESET_BYTES, 100);
 }
 
 // 设置全部灯为指定颜色
@@ -229,7 +230,7 @@ void Ws2812B::ApplyColor(Color color)
 {
     switch (color)
     {
-    case Color::RED:    SetAllColor((uint8_t)(0.972 * WS2812B_BRIGHTNESS), (uint8_t)(0.709 * WS2812B_BRIGHTNESS), 0x00); break;
+    case Color::RED:    SetAllColor(WS2812B_BRIGHTNESS, 0x00, 0x00); break;
     case Color::GREEN:  SetAllColor(0x00, WS2812B_BRIGHTNESS, 0x00); break;
     case Color::BLUE:   SetAllColor(0x00, 0x00, WS2812B_BRIGHTNESS); break;
     case Color::WHITE:  SetAllColor(WS2812B_BRIGHTNESS, WS2812B_BRIGHTNESS, WS2812B_BRIGHTNESS); break;
