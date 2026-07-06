@@ -80,6 +80,15 @@ namespace IR
 		IRCom(UART_HandleTypeDef &huart_, uint8_t* buf_);
 		~IRCom() = default;
 
+		bool Consume_New_Cmd()
+		{
+			taskENTER_CRITICAL();
+			bool pending = new_cmd_pending;
+			new_cmd_pending = false;
+			taskEXIT_CRITICAL();
+			return pending;
+		}
+
 		void Clear_All_Cmd()
 		{
 			for (uint8_t i = 0; i < IR_MAX_CMD; i++)
@@ -100,6 +109,7 @@ namespace IR
 		volatile bool last_parity;
 		volatile bool is_init;
 		volatile uint8_t last_cmd;
+		volatile bool new_cmd_pending;
 		
 		UART_HandleTypeDef &huart;
 		

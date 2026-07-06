@@ -6,6 +6,7 @@ namespace IR
 	{
 		last_parity = false;
 		last_cmd = 0;
+		new_cmd_pending = false;
 
 		is_init = false;
 	}
@@ -50,6 +51,7 @@ namespace IR
 			{
 				if (cmd != 0 && cmd <= IR_MAX_CMD)
 				{
+					new_cmd_pending = true;
 					if (IRCmd::cmd_list[cmd - 1] != nullptr)
 					{
 						IRCmd::cmd_list[cmd - 1]->time_stamp = timer::Timer::Get_TimeStamp();

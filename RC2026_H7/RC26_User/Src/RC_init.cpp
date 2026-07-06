@@ -282,11 +282,16 @@ void Main_Task(void *argument)
 		}
 		
 		//led.SetRed();
+
+		if (ir_com.Consume_New_Cmd())
+		{
+			led.FlashOnce(ws2812::Color::GREEN, ws2812::Color::NONE);
+		}
 		
-//		if (remote_ctrl.signal_swd())
-//		{
-//			led.FlashOnce(ws2812::Color::GREEN, ws2812::Color::NONE);
-//		}
+		// if (remote_ctrl.signal_swd())
+		// {
+		// 	led.FlashOnce(ws2812::Color::GREEN, ws2812::Color::NONE);
+		// }
 		
 		imu_fusion.Fusion();
 		float fusion_yaw = hwt101ct.Yaw();
