@@ -53,25 +53,38 @@ GetWeaponHead::GetWeaponHead(
 }
 
 void GetWeaponHead::Auto_Get_Weapon_Head() {
-    for(int i = 0;i<3;i++) {//red 123 blue 456
-        if (weapon_event[i].Is_Trig() && gantry_state == GANTRY_STATE::Gantry_Idle) {
-			
+	
+	if(computer_mode == Computer_Mode::Challenge){
+		for(int i = 0;i<3;i++) {//red 123 blue 456
+			if (weapon_event[i].Is_Trig() && gantry_state == GANTRY_STATE::Gantry_Idle) {
 			pick_num = i + 1;
-			
 			if(computer_side == Computer_Side::BLUE_SIDE){
 				pick_num = pick_num + 3;
 			}
-			
             Pick(pick_num); 
             path_plan.Disable();
             head_ctrl.Enable();
             Set_Yaw(chassis_target_yaw);
             weapon_event_index = i;
-			
             break;
-        }
-    }
+			}
+		}
+	}
+	else{
+		if (weapon_event[0].Is_Trig() && gantry_state == GANTRY_STATE::Gantry_Idle) {
+			//pick_num = 1;
+			Pick(pick_num); 
+            path_plan.Disable();
+            head_ctrl.Enable();
+            Set_Yaw(chassis_target_yaw);
+		}
+	}
 
+
+	
+	
+	
+	
 
 
     // 更新curr_x和curr_y

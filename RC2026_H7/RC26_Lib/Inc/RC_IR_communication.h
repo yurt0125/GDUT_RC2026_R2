@@ -4,6 +4,7 @@
 #include "RC_serial.h"
 #include <string.h>
 #include "RC_timer.h"
+#include "RC_ws2812.h"
 
 constexpr uint8_t IR_COM_RX_BUFFER_SIZE = 32;
 
@@ -41,8 +42,6 @@ namespace IR
 				return false;
 			}
 		}
-		
-		
 		
     private:
 		static IRCmd* cmd_list[IR_MAX_CMD];

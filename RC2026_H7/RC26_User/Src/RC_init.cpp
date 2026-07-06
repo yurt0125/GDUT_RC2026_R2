@@ -102,8 +102,6 @@ check::HeadCheck head_check(
 // 雷达数据接收
 ros::Radar radar(CDC_HS, 1, robot_pose);
 
-
-
 // 梅林路径接收，生成
 ros::BestPath best_path(CDC_HS, 7, navigation);
 
@@ -254,24 +252,41 @@ void Main_Task(void *argument)
 	remote_ctrl.signal_swd();
 //	wave.Init();
 	
-	
+	uint16_t feedback_count = 0;
+	uint8_t feedback_data[10];
 	
 	for (;;)
 	{
-		
-		
-		led.SetRed();
-		
-		
-		
-		if (remote_ctrl.signal_swd())
+		feedback_count++;
+		if (feedback_count > 1000)
 		{
-			led.FlashOnce(ws2812::Color::GREEN, ws2812::Color::NONE);
+			int16_t x 		= (int16_t)(robot_pose.X() * 100);
+			int16_t y 		= (int16_t)(robot_pose.Y() * 100);
+			int16_t yaw 	= (int16_t)(robot_pose.Yaw() * 100);
+			int16_t cali_l 	= (int16_t)(cali_laser.distance);
+			int16_t check_l = (int16_t)(check_laser.distance);
+			
+			feedback_data[0] = x 		>> 8;
+			feedback_data[1] = x 			;
+			feedback_data[2] = y 		>> 8;
+			feedback_data[3] = y 			;
+			feedback_data[4] = yaw 	    >> 8;
+			feedback_data[5] = yaw 	  	  	;
+			feedback_data[6] = cali_l 	>> 8;
+			feedback_data[7] = cali_l 		;
+			feedback_data[8] = check_l  >> 8;
+			feedback_data[9] = check_l  	;
+			
+			CDC_HS.CDC_Send_Pkg(2, feedback_data, 10, 0);
+			feedback_count = 0;
 		}
 		
+		//led.SetRed();
 		
-		
-		
+//		if (remote_ctrl.signal_swd())
+//		{
+//			led.FlashOnce(ws2812::Color::GREEN, ws2812::Color::NONE);
+//		}
 		
 		imu_fusion.Fusion();
 		float fusion_yaw = hwt101ct.Yaw();
@@ -338,13 +353,7 @@ void Main_Task(void *argument)
 
 task::TaskCreator main_task("Main_Task", 22, 512, Main_Task, NULL);
 
-
-
-
-
-
-
-
+/*-----------------------------------------------------------------*/
 
 void Path_Task(void *argument)
 {
@@ -361,7 +370,7 @@ void Path_Task(void *argument)
 
 task::TaskCreator path_task("Path_Task", 31, 256, Path_Task, NULL);
 
-
+/*-----------------------------------------------------------------*/
 
 // 自动状态机
 enum AutoState : uint8_t
@@ -380,6 +389,8 @@ AutoState state = STATE_PUT_2L; // 状态机
 
 void Plan_Task(void *argument)
 {
+	led.SetYellow();
+	
 	while (!data::AllData::Is_All_Init())
 	{
 		osDelay(10); // 等待上位机发送
@@ -390,18 +401,26 @@ void Plan_Task(void *argument)
 	
 	/*------------------------------设置----------------------------------*/
 	
-	get_weapon_head.Set_Side(data::Side::Is_Blue_Left_Side());
-	get_weapon_head.Set_Pick_Num(data::PickWeaponNum::Get_Pick_Num()); /*夹第4个武器（靠内小）*/
+	get_weapon_head.Set_Side(data::Side::Is_Blue_Left_Side()); /*设置半场*/
+	get_weapon_head.Set_Pick_Num(data::PickWeaponNum::Get_Pick_Num()); /*夹第n个武器（靠内小）*/
+	
+	if (data::Side::Is_Blue_Left_Side())
+	{
+		led.FlashContinuous(ws2812::Color::BLUE, ws2812::Color::NONE); // 蓝色闪烁
+	}
+	else
+	{
+		led.FlashContinuous(ws2812::Color::RED, ws2812::Color::NONE); // 红色闪烁
+	}
 	
 	if (data::MatchType::Get_Match_Type() == 1)
 	{
-		get_weapon_head.Set_Mode(0);
+		get_weapon_head.Set_Mode(0); // 挑战赛
 	}
 	else
 	{
 		get_weapon_head.Set_Mode(1);
 	}
-	
 	
 	if (( data::HaveOutKFS::Have_Out_KFS() && data::KFSNum::Get_KFS_Num() != 0 ) || (data::KFSNum::Get_KFS_Num() == 4))
 	{
@@ -413,7 +432,6 @@ void Plan_Task(void *argument)
 	{
 		data::HaveOutKFS::Set_Have_Out_KFS(false);
 	}
-	
 	
 	/*-----------------------------初始化全局起点-----------------------------------*/
 	
@@ -469,8 +487,6 @@ void Plan_Task(void *argument)
 			best_path.Generate_Path();
 		}
 
-		// 放中间
-		//navigation.Go_To_Put_KFS_2L(2);
 		navigation.Go_To_Avoid_R1_In_ARENA();
 	}
 	else if (data::MatchType::Get_Match_Type() == 1) // 一二区挑战赛
@@ -507,37 +523,21 @@ void Plan_Task(void *argument)
 		navigation.Challenge_Go_To_Get_KFS_Ground(2);
 		navigation.Challenge_Go_To_Avoid_R1_In_ARENA();
 		
-		//navigation.Challenge_Go_To_Get_KFS_Ground(1);
 	}
+	
 	/*------------------------------循环----------------------------------*/
 
-	uint16_t feedback_count = 0;
-	uint8_t feedback_data[10];
+	if (data::Side::Is_Blue_Left_Side())
+	{
+		led.SetBlue(); // 蓝色常亮
+	}
+	else
+	{
+		led.SetRed(); // 红色常亮
+	}
+	
 	for (;;)
 	{
-		feedback_count++;
-		if (feedback_count > 1000)
-		{
-			int16_t x 		= (int16_t)(robot_pose.X() * 100);
-			int16_t y 		= (int16_t)(robot_pose.Y() * 100);
-			int16_t yaw 	= (int16_t)(robot_pose.Yaw() * 100);
-			int16_t cali_l 	= (int16_t)(cali_laser.distance);
-			int16_t check_l = (int16_t)(check_laser.distance);
-			
-			feedback_data[0] = x 		>> 8;
-			feedback_data[1] = x 			;
-			feedback_data[2] = y 		>> 8;
-			feedback_data[3] = y 			;
-			feedback_data[4] = yaw 	    >> 8;
-			feedback_data[5] = yaw 	  	  	;
-			feedback_data[6] = cali_l 	>> 8;
-			feedback_data[7] = cali_l 		;
-			feedback_data[8] = check_l  >> 8;
-			feedback_data[9] = check_l  	;
-			
-			CDC_HS.CDC_Send_Pkg(2, feedback_data, 10, 0);
-			feedback_count = 0;
-		}
 		
 		/*-----------------------------状态机-----------------------------------*/
 		
@@ -688,8 +688,7 @@ void Plan_Task(void *argument)
 
 task::TaskCreator plan_task("Plan_Task", 19, 256, Plan_Task, NULL);
 
-
-//
+/*-----------------------------------------------------------------*/
 
 
 
