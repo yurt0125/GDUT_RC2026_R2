@@ -36,8 +36,12 @@ Ws2812B::Ws2812B(SPI_HandleTypeDef* hspi_)
         spi_buf[i] = 0;
     }
 
-    // 队列延迟到 Task_Process 首次运行时创建（此时 RTOS 已启动）
-    // xQueueCreate 必须在 osKernelStart 之后才能调用
+    // 在构造函数中创建队列（FreeRTOS 允许在调度器启动前创建队列）
+    signal_queue = xQueueCreate(10, sizeof(Command));
+    if (signal_queue == nullptr)
+    {
+        Error_Handler();
+    }
 
     // 设置全局实例指针，供兼容接口使用
     g_ws2812b_instance = this;
@@ -79,19 +83,7 @@ void Ws2812B::EncodeLed(uint16_t led_index, uint8_t r, uint8_t g, uint8_t b)
 // 状态机任务处理
 void Ws2812B::Task_Process()
 {
-    // 延迟初始化：首次运行时创建队列（此时 RTOS 已启动）
-    if (signal_queue == nullptr)
-    {
-        signal_queue = xQueueCreate(10, sizeof(Command));
-        if (signal_queue == nullptr)
-        {
-            Error_Handler();
-        }
-        // 初始化完成后刷一次初始颜色
-        ApplyColor(current_color);
-        SpiSend();
-        return;
-    }
+
 
     Command command;
     uint32_t current_time = timer::Timer::Get_TimeStamp();
